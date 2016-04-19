@@ -1,5 +1,6 @@
 import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
+import * as jQuery from 'jquery';
 
 export default class LoginViewControl extends BaseViewControl {
     templateString: string = require('./login.vc.html');
@@ -28,6 +29,6 @@ export default class LoginViewControl extends BaseViewControl {
 
 }
 
-var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+var ref = new Firebase("https://popping-inferno-1046.firebaseIO.com");
 
 register.viewControl('login-vc', LoginViewControl);
