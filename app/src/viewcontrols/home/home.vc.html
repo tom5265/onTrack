@@ -1,0 +1,35 @@
+<!--<h1>Add a post to the server here.</h1>
+<input type='text' id='nameInput' placeholder='Name'>
+<input type='text' id='messageInput' placeholder='Message'>
+<button id="button" plat-tap="sendData()">post</button>
+<br>
+<br>
+<br>-->
+<!--<h1>Create a new account here</h1>
+<input type='text' id='newUserInput' placeholder='username'> <p>Example: username@email.com</p>
+<input type='text' type="password" id='newPasswordInput' placeholder='password'>
+<br>
+<button plat-tap="createUser()">Create New Account</button>
+<div id='messagesDiv'></div>-->
+
+<div class="home-main-container">
+    <h1>Tasks</h1>
+    <plat-foreach plat-context="currentTasks">    
+        <div class="current-task-container row">
+            <div class="current-task col-phn-12">
+                <p>{{@context}}</p>
+            </div>
+        </div>
+    </plat-foreach>
+    
+    
+    <!-- ADD NEW TASK -->
+    <div class="add-task-container row">
+        <div class="plus-task col-phn-2" plat-tap="addNewTask()">
+            <h6>+</h6>
+        </div>
+        <div class="add-task col-phn-10">
+            <p>Add New Task</p>
+        </div>
+    </div>
+</div>

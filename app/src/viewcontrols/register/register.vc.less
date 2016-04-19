@@ -1,0 +1,40 @@
+& {
+    #platui > #media;
+    #platui > #mixins;
+    #platui > #variables;
+
+    [plat-control="register-vc"] {
+        .main {
+            background: #83a4d4; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+            height: 100vh;
+            width: 100%;                          
+        }
+        .form-container {
+            position: relative;
+            text-align: center;
+            top: 15%;
+            height: 23em;
+            width: 20em;
+            background-color: #fff;
+            margin: 0 auto;
+            border-radius: 3%;
+            box-shadow: 0 0 12px #888888;
+            input {
+                border-radius: 0.275em;
+            }
+            .email-form, .password-form {
+                margin-top: 0.75em;
+            }
+            img {
+                margin-top: 1.75em;
+                height: 4em;
+                width: 9.5em;
+            }
+            .log-btn {
+                margin-top: 0.5em;
+            }
+        }
+    }
+}

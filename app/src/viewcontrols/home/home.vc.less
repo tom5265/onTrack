@@ -1,0 +1,80 @@
+& {
+    #platui > #media;
+    #platui > #mixins;
+    #platui > #variables;
+
+    [plat-control="home-vc"] {
+
+    }
+}
+
+@PrimaryBlue: #669ff1;
+
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+}
+
+.home-main-container{
+    width: 100%;
+    
+    h1{
+        color: @PrimaryBlue;
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    .current-task-container{
+        width: 60%;
+        // height: 3em;
+        margin: auto;
+        border: 2px solid @PrimaryBlue;
+        .border-radius;
+        margin-bottom: 3%;
+        
+        .current-task{
+            text-align: center;
+            color: @PrimaryBlue;
+            height: 3em;
+            p{
+                font-size: 1.25em;
+                line-height: 2.5em;
+                padding: 0;
+            }
+        }
+    }
+    
+    .add-task-container{
+        width: 60%;
+        // height: 3em;
+        margin: auto;
+        border: 2px solid @PrimaryBlue;
+        .border-radius;
+        
+        .plus-task{
+            background-color: @PrimaryBlue;
+            text-align: center;
+            color: white;
+            height: 3em;
+             h6{
+                 font-size: 1.75em;
+                 padding: 0;
+                 line-height: 1.65em;
+             }
+        }
+        
+        .add-task{
+            text-align: center;
+            color: @PrimaryBlue;
+            height: 3em;
+            p{
+                font-size: 1.25em;
+                line-height: 2.5em;
+                padding: 0;
+            }
+          
+        }
+        
+    }
+}
