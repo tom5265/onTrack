@@ -14,14 +14,15 @@
 
 <div class="home-main-container">
     <h1>Tasks</h1>
-    <plat-foreach plat-context="currentTasks">    
-        <div class="current-task-container row">
-            <div class="current-task col-phn-12">
-                <p>{{@context}}</p>
+    <div class="current-task-parent-container">
+        <plat-foreach plat-context="currentTasks">    
+            <div class="current-task-container row">
+                <div class="current-task col-phn-12">
+                    <p>{{@context}}</p>
+                </div>
             </div>
-        </div>
-    </plat-foreach>
-    
+        </plat-foreach>
+    </div>
     
     <!-- ADD NEW TASK -->
     <div class="add-task-container row">

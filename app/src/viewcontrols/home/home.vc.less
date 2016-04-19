@@ -25,11 +25,18 @@
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     
-    .current-task-container{
+    .current-task-parent-container{
+        background-color: @PrimaryBlue;
         width: 60%;
-        // height: 3em;
         margin: auto;
-        border: 2px solid @PrimaryBlue;
+        padding: 2% 0;
+        .border-radius;
+        
+    }
+    .current-task-container{
+        width: 90%;
+        background-color: white;
+        margin: 5% auto;
         .border-radius;
         margin-bottom: 3%;
         
@@ -47,10 +54,11 @@
     
     .add-task-container{
         width: 60%;
-        // height: 3em;
         margin: auto;
+        margin-top: 3%;
         border: 2px solid @PrimaryBlue;
         .border-radius;
+        
         
         .plus-task{
             background-color: @PrimaryBlue;
@@ -62,6 +70,10 @@
                  padding: 0;
                  line-height: 1.65em;
              }
+        }
+        
+        .plus-task:hover{
+            background-color: darken(@PrimaryBlue, 5%);
         }
         
         .add-task{

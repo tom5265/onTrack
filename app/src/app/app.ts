@@ -3,6 +3,7 @@ import HomeViewControl from '../viewcontrols/home/home.vc';
 import RegisterViewControl from '../viewcontrols/register/register.vc';
 import LoginViewControl from '../viewcontrols/login/login.vc';
 import WelcomeViewControl from '../viewcontrols/welcome/welcome.vc';
+import NewTaskViewControl from '../viewcontrols/newtask/newtask.vc';
 
 
 export default class MyApp extends App {
@@ -15,7 +16,8 @@ export default class MyApp extends App {
             { pattern: '', view: HomeViewControl },
             { pattern: '/login', view: LoginViewControl }, 
             { pattern: '/register', view: RegisterViewControl },
-             { pattern: '/welcome', view: WelcomeViewControl }
+            { pattern: '/welcome', view: WelcomeViewControl },
+            { pattern: '/newtask', view: NewTaskViewControl }
         ]);
     }
 

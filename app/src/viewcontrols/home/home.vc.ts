@@ -1,6 +1,7 @@
 import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import * as jQuery from 'jquery';
+import NewTaskViewControl from '../../viewcontrols/newtask/newtask.vc';
 
 export default class HomeViewControl extends BaseViewControl {
   templateString: string = require('./home.vc.html');
@@ -11,57 +12,8 @@ export default class HomeViewControl extends BaseViewControl {
 
 
   addNewTask(){
-      console.log('adding new task');
+      this.navigator.navigate(NewTaskViewControl);
   }
-
-  sendData() {
-    var name = jQuery('#nameInput').val();
-    var text = jQuery('#messageInput').val();
-    if (name.length === 0) {
-      alert('enter a name ya dingus');
-      return;
-    } if (text.length === 0) {
-      alert('enter a message ya dingus')
-      return;
-    } else {
-    myDataRefPosts.push(
-      {
-        name: name,
-        text: text
-      });
-    jQuery('#messageInput').val('');
-    jQuery('#nameInput').val('');
-    alert('post successful!');
-    }
-  };
-
-  createUser(email: string, password: string) {
-    var accountName = jQuery('#newUserInput').val();
-    var accountPassword = jQuery('#newPasswordInput').val();
-    var myDataRefUsers = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/users');
-    myDataRefUsers.createUser({
-      email: accountName,
-      password: accountPassword
-    }, function (error, userData) {
-      if (error) {
-        console.log("Error creating user:", error);
-        alert('Username was invalid or already taken!');
-      } else {
-        console.log("Successfully created user account with uid:", userData.uid);
-        alert('congrats, you made an account with the username ' + accountName + ' !')
-      }
-    });
-  }
-
-
-  getMessages() {
-    console.log('getMessages running');
-    myDataRefPosts.on("value", function(snapshot) {
-      console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-  };
 
 
 }
