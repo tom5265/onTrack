@@ -8,16 +8,14 @@ import HomeViewControll from '../../viewcontrols/home/home.vc';
 export default class LoginViewControl extends BaseViewControl {
     templateString: string = require('./login.vc.html');
 
-    context: any = {};
+    context: any = {
+        register: RegisterViewControl
+    };
     
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
     
-    toRegister() {
-        this.navigator.navigate(RegisterViewControl)
-    }
-
     logInUser() {
         let email: string = jQuery('#emailInput').val();
         let password: string = jQuery('#passwordInput').val();
