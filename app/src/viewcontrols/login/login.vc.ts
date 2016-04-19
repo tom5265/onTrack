@@ -34,4 +34,4 @@ export default class LoginViewControl extends BaseViewControl {
 
 var ref = new Firebase("https://popping-inferno-1046.firebaseIO.com");
 
-register.viewControl('login-vc', LoginViewControl);
+register.viewControl('login-vc', LoginViewControl, [FirebaseRepository]);
