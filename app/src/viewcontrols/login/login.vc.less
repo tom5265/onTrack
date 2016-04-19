@@ -4,6 +4,40 @@
     #platui > #variables;
 
     [plat-control="login-vc"] {
-
+        .main {
+            background: #83a4d4; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+            height: 100vh;
+            width: 100%;                          
+        }
+        .form-container {
+            position: relative;
+            text-align: center;
+            top: 15%;
+            width: 20em;
+            max-width: 80%;
+            background-color: #fff;
+            margin: 0 auto;
+            border-radius: 3%;
+            box-shadow: 0 0 12px #888888;
+            input {
+                border-radius: 0.275em;
+                max-width: 80%;
+            }
+            #emailInput, #passwordInput {
+                margin-top: 1em;
+                width: 65%;
+            }
+            img {
+                margin-top: 1.75em;
+                height: 4em;
+                width: 9.5em;
+                max-width: 80%;
+            }
+            .log-btn {
+                margin-top: 1em;
+            }
+        }
     }
 }
