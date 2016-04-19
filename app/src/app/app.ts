@@ -13,7 +13,7 @@ export default class MyApp extends App {
 		config.routingType = config.STATE;
 
         router.configure([
-            { pattern: '', view: HomeViewControl },
+            { pattern: '', view: LoginViewControl },
             { pattern: '/login', view: LoginViewControl }, 
             { pattern: '/register', view: RegisterViewControl },
             { pattern: '/welcome', view: WelcomeViewControl },
