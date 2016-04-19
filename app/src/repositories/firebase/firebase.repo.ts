@@ -26,4 +26,4 @@ export default class FirebaseRepository extends BaseRepository {
     
 }
 
-register.injectable('firebase-repo', FirebaseRepository);
+register.injectable('firebase-repo', FirebaseRepository, [firebaseservice]);
