@@ -1,11 +1,16 @@
 import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import * as jQuery from 'jquery';
+import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 
 export default class LoginViewControl extends BaseViewControl {
     templateString: string = require('./login.vc.html');
 
     context: any = {};
+    
+    constructor(private firebaserepo: FirebaseRepository) {
+        super();
+    }
 
     logInUser() {
         let email: string = jQuery('#emailInput').val();
@@ -14,15 +19,13 @@ export default class LoginViewControl extends BaseViewControl {
     }
 
     authenticate(email:string , password:string) {
-        ref.authWithPassword({
-            email: email,
-            password: password
-        }, function (error, authData) {
-            if (error) {
-                console.log("Login Failed!", error);
-            } else {
-                console.log("Authenticated successfully with payload:", authData);
-            }
+        console.log('step1');
+        this.firebaserepo.logInUser(email, password).then((success: any) => {
+            console.log(success);
+            // this.context.uid = success.uid;
+        }, (err: any) => {
+            console.log('something went wrong!');
+            console.log(err);
         });
 
     }

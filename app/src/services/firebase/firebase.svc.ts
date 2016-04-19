@@ -7,9 +7,8 @@ export default class FirebaseService extends BaseService {
     createUser(email: string, password: string): async.IThenable<any> {
         var accountName = email;
         var accountPassword = password;
-        var myDataRefUsers = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/users');
         return new Promise((resolve, reject) => {
-            myDataRefUsers.createUser({
+            myDataRef.createUser({
                 email: accountName,
                 password: accountPassword
             }, function (error, userData) {
@@ -25,8 +24,26 @@ export default class FirebaseService extends BaseService {
             });
         });
     }
-
+    logInUser(email: string, password: string) {
+        let accountName = email;
+        let accountPassword = password;
+        return new Promise((resolve, reject) => {
+            myDataRef.authWithPassword({
+            email: email,
+            password: password
+        }, function (error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+            }
+        });
+        })
+    }
 
 }
+
+var myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com/');
+
 
 register.injectable('firebase-svc', FirebaseService);
