@@ -47,11 +47,13 @@ export default class FirebaseService extends BaseService {
         })
     }
 
+
     postUserTask(taskName: string) {
         console.log(taskName);
         this.myDataRefPosts.push({
             task: taskName
         })
+       
     }
     
     getUserTasks() {
@@ -59,8 +61,6 @@ export default class FirebaseService extends BaseService {
     }
 
 }
-
-
 
 
 
