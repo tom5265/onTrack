@@ -24,7 +24,7 @@ export default class FirebaseRepository extends BaseRepository {
     }
     
     logInUser(email:string, password: string) {
-        console.log('poop');
+        console.log('working');
         return new Promise((resolve, reject) => {
             this.firebaservice.logInUser(email, password).then((success: any) => {
                 console.log('success');
