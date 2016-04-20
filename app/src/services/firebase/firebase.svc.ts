@@ -33,12 +33,30 @@ export default class FirebaseService extends BaseService {
             password: password
         }, function (error, authData) {
             if (error) {
-                console.log("Login Failed!", error);
+                reject(error);
             } else {
                 console.log("Authenticated successfully with payload:", authData);
+                resolve(authData);
             }
         });
         })
+    }
+    postUserTask(taskName:string){
+        console.log(taskName);
+        return new Promise((resolve, reject) => {
+            myDataRef.push({
+            task: taskName
+            }, function (error, success) {
+                if(error){
+                    console.log(error)
+                } else{
+                    console.log('pushed task to server!');
+                }
+        });
+        })
+    }
+    getUserTasks(){
+        console.log('getting tasks');
     }
 
 }

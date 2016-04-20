@@ -3,7 +3,7 @@ import BaseViewControl from '../base/base.vc';
 import * as jQuery from 'jquery';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import RegisterViewControl from '../../viewcontrols/register/register.vc';
-import HomeViewControll from '../../viewcontrols/home/home.vc';
+import HomeViewControl from '../../viewcontrols/home/home.vc';
 
 export default class LoginViewControl extends BaseViewControl {
     templateString: string = require('./login.vc.html');
@@ -26,14 +26,23 @@ export default class LoginViewControl extends BaseViewControl {
     authenticate(email:string , password:string) {
         console.log('step1');
         this.firebaserepo.logInUser(email, password).then((success: any) => {
-            console.log(success);
-            this.navigator.navigate(HomeViewControll);
+            console.log('logging in..');
+            this.navigator.navigate(HomeViewControl);
             // this.context.uid = success.uid;
         }, (err: any) => {
             console.log('something went wrong!');
-            console.log(err);
+            this.wrongPassword();
         });
 
+    }
+    
+    //displays div when password is wrong
+    wrongPassword(){
+        jQuery('#passwordInput').after("<div class='invalid-password'>Invalid Password</div>");
+    }
+    //when the user clicks the password input the invalid password div is removed
+    removeInvalid(){
+        jQuery(".invalid-password").remove();
     }
 
 }

@@ -10,7 +10,11 @@ export default class HomeViewControl extends BaseViewControl {
       currentTasks: ["Make Birdhouse", "Complete the bench in the backyard"]
   };
 
-
+  initialize(){
+      console.log('hello world');
+  }
+  
+  
   addNewTask(){
       this.navigator.navigate(NewTaskViewControl);
   }

@@ -1,6 +1,7 @@
 import {async, register} from 'platypus';
 import BaseRepository from '../base/base.repo';
 import firebaseservice from '../../services/firebase/firebase.svc';
+import * as jQuery from 'jquery';
 
 
 export default class FirebaseRepository extends BaseRepository {
@@ -31,13 +32,14 @@ export default class FirebaseRepository extends BaseRepository {
                 console.log(success);
                 resolve(success);
             }, (err: any) => {
-                console.log('something went wrong!');
-                console.log(err);
                 reject(err);
             })
         })
     }
     
+    postUserTask(taskName: string){
+        this.firebaservice.postUserTask(taskName);
+    }
     
 }
 
