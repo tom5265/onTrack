@@ -12,14 +12,14 @@ export default class FirebaseService extends BaseService {
                 email: accountName,
                 password: accountPassword
             }, function (error, userData) {
-                    if (error) {
-                        console.log("Error creating user:", error);
-                        alert('Username was invalid or already taken!');
-                        reject(error);
-                    } else {
-                        alert('congrats, you made an account with the username ' + accountName + ' !');
-                        resolve(userData);
-                    }
+                if (error) {
+                    console.log("Error creating user:", error);
+                    alert('Username was invalid or already taken!');
+                    reject(error);
+                } else {
+                    alert('congrats, you made an account with the username ' + accountName + ' !');
+                    resolve(userData);
+                }
             });
         });
     }
@@ -28,34 +28,25 @@ export default class FirebaseService extends BaseService {
         let accountPassword = password;
         return new Promise((resolve, reject) => {
             myDataRef.authWithPassword({
-            email: email,
-            password: password
-        }, function (error, authData) {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(authData);
-            }
-        });
-        })
-    }
-    postUserTask(taskName:string): async.IThenable<any>{
-        console.log(taskName);
-        return new Promise((resolve, reject) => {
-            myDataRef.push({
-            task: taskName
-            }, function(error:any, success:any) {
-                if(error){
-                    console.log(error)
+                email: email,
+                password: password
+            }, function (error, authData) {
+                if (error) {
                     reject(error);
-                } else{
-                    console.log('pushed task to server!');
-                    resolve(success);
+                } else {
+                    resolve(authData);
                 }
-        });
+            });
         })
     }
-    getUserTasks(){
+    postUserTask(taskName: string) {
+        console.log(taskName);
+        myDataRef.push({
+            task: taskName
+        })
+    }
+    
+    getUserTasks() {
         console.log('getting tasks');
     }
 
