@@ -10,7 +10,7 @@ containerArray: Array<any> = [];
         super();
     }
 
-    getAllReddits(): async.IThenable<Array<any>> {
+    getAllReddits(): async.IThenable<Array<models.ISubReddit>> {
         if (this.containerArray.length === 0) {
             return this.RedditService.getList().then((success) => {
                 this.containerArray = [];
