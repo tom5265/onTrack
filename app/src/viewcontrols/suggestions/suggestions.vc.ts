@@ -1,6 +1,7 @@
 import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import RedditRepository from '../../repositories/reddit/reddit.repo'
+import HomeViewControl from '../../viewcontrols/home/home.vc';
 
 export default class SuggestionsViewControl extends BaseViewControl {
     templateString: string = require('./suggestions.vc.html');
@@ -10,7 +11,8 @@ export default class SuggestionsViewControl extends BaseViewControl {
     }
 
     context: any = {
-        reddits: <Array<any>>[]
+        reddits: <Array<any>>[],
+        home: HomeViewControl
     };
     
     navigatedTo(): void {
