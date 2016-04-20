@@ -21,12 +21,10 @@ export default class HomeViewControl extends BaseViewControl {
   }
   
   navigatedTo(parameters: { id: string; }) {
-    var tempArray:Array<any> = [];
+    var tempArray:Array<any> = []; //temp array to later assign to context
     this.context.userSpecificId = parameters.id;
     let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId);
-    
-    
-    console.log(myDataRefPosts);
+    //retrieves user specific data from server
     myDataRefPosts.on("value", function(snapshot, prevChildKey) {
     var newPost = snapshot.val();
     console.log(newPost);

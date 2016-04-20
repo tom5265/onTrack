@@ -4,61 +4,83 @@
     #platui > #variables;
 
     [plat-control="newtask-vc"] {
-
-    }
-}
-
-.new-task-main-container{
-    width: 100%;
-    
-    .new-task-top-header{
-        height: 175px;
-        background-color: @PrimaryBlue;
+    .new-task-main-container{
+       width: 100%;
+       
+       h3{
+           font-family: @Oswald;
+           font-weight: 400;
+           color: gray;
+       }
         
-        h1{
-            font-family: 'Oswald', sans-serif;
-            font-size: 3em;
+        .new-task-top-header{
+            height: 175px;
+            background-color: @PrimaryBlue;
+            
+            h1{
+                font-family: 'Oswald', sans-serif;
+                font-size: 3em;
+                text-align: center;
+                line-height: 2.25em;
+                color: white;
+                text-transform: uppercase;
+            }
+        }
+        
+        .new-task-middle{
+            width: 80%;
+            margin: auto;
+            margin-top: 5%;
             text-align: center;
-            line-height: 2.25em;
-            color: white;
-            text-transform: uppercase;
-        }
-    }
-    
-    .new-task-middle{
-        width: 80%;
-        margin: auto;
-        margin-top: 5%;
-        text-align: center;
-        
-        h3{
-            font-family: @Oswald;
-            font-weight: 400;
-            color: gray;
-        }
-        .task-name-container{
-            input{
-                width: 50%;
-                .border-radius;
+            
+            .task-name-container{
+                input{
+                    width: 50%;
+                    .border-radius(0)
+                }
             }
-        }
-        .checkpoint-container{
-            input{
-                width: 75%;
-                .border-radius;
+            .checkpoint-container{
+                input{
+                    width: 75%;
+                    .border-radius(0);
+                }
             }
-        }
-        .checkpoint-add{
-            margin: 0 auto;
-            margin-top: 1.5%;
-            button{
-                color: @PrimaryBlue;
-                background-color: white;
-                border: 2px solid @PrimaryBlue;
+            .checkpoint-add{
+                margin: 0 auto;
+                margin-top: 3%;
+                button{
+                    color: @PrimaryBlue;
+                    background-color: white;
+                    border: 2px solid @PrimaryBlue;
+                    font-family: @Oswald;
+                    font-weight: 400;
+                }
+            }
+            
+            .created-checkpoint-container{
+                width: 100%;
+                margin: auto;
+                
+                .created-checkpoint{
+                    color: @PrimaryBlue;
+                    border-bottom: 1px dashed lightgray;
+                }
+            }
+            
+            .save-task-button{
+                margin-top: 5%;
+                border: 2px solid @PrimaryGreen;
+                color: @PrimaryGreen;
                 font-family: @Oswald;
                 font-weight: 400;
+                font-size: 1.5em;
+                width: 30%;
+                background-color: white;
             }
         }
     }
-   
 }
+}
+
+   
+
