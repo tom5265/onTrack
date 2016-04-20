@@ -39,6 +39,7 @@ export default class FirebaseService extends BaseService {
             });
         })
     }
+
     postUserTask(taskName: string) {
         console.log(taskName);
         myDataRef.push({
