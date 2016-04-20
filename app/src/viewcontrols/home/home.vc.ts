@@ -22,11 +22,14 @@ export default class HomeViewControl extends BaseViewControl {
   
   navigatedTo(parameters: { id: string; }) {
     var tempArray:Array<any> = [];
-    let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId)
     this.context.userSpecificId = parameters.id;
+    let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId);
+    
+    
     console.log(myDataRefPosts);
-    myDataRefPosts.on("child_added", function(snapshot, prevChildKey) {
+    myDataRefPosts.on("value", function(snapshot, prevChildKey) {
     var newPost = snapshot.val();
+    console.log(newPost);
     for(let prop in newPost){
          console.log(((newPost[prop].task.taskName)));
          let name = newPost[prop].task.taskName;
