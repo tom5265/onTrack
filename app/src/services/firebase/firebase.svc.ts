@@ -17,7 +17,6 @@ export default class FirebaseService extends BaseService {
                         alert('Username was invalid or already taken!');
                         reject(error);
                     } else {
-                        console.log("Successfully created user account with uid:", userData.uid);
                         alert('congrats, you made an account with the username ' + accountName + ' !');
                         resolve(userData);
                     }
@@ -35,22 +34,23 @@ export default class FirebaseService extends BaseService {
             if (error) {
                 reject(error);
             } else {
-                console.log("Authenticated successfully with payload:", authData);
                 resolve(authData);
             }
         });
         })
     }
-    postUserTask(taskName:string){
+    postUserTask(taskName:string): async.IThenable<any>{
         console.log(taskName);
         return new Promise((resolve, reject) => {
             myDataRef.push({
             task: taskName
-            }, function (error, success) {
+            }, function(error:any, success:any) {
                 if(error){
                     console.log(error)
+                    reject(error);
                 } else{
                     console.log('pushed task to server!');
+                    resolve(success);
                 }
         });
         })
