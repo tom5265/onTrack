@@ -50,7 +50,7 @@ export default class FirebaseService extends BaseService {
 
     postUserTask(taskName:Object) {
         console.log(taskName);
-        this.myDataRefPosts.set({
+        this.myDataRefPosts.push({
             task: taskName
         })
        

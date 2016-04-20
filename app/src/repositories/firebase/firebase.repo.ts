@@ -32,6 +32,10 @@ export default class FirebaseRepository extends BaseRepository {
         this.firebaservice.postUserTask(task)
     }
     
+    getUserTasks(userId:string){
+        
+    }
+    
 }
 
 register.injectable('firebase-repo', FirebaseRepository, [firebaseservice]);
