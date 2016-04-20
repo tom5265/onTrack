@@ -2,16 +2,13 @@
     <div class="form-container">
         <h4>Log In</h4>
         <p>Welcome Back! Log-in here.</p>
-        <input type="text" placeholder="email" id="emailInput">
+        <plat-input type="text" placeholder="email" id="emailInput"></plat-input>
         <br>
-        <input type="password" placeholder="password" id="passwordInput" plat-tap="removeInvalid()">
+        <plat-input type="password" placeholder="password" id="passwordInput" plat-tap="removeInvalid()"></plat-input>
         <br>
         <plat-button plat-tap="logInUser()" class="button-primary button-outline log-btn">Log-In</plat-button>
         <br>
         <p>Don't have an account? <br><plat-link plat-options="{ view: register }">Sign Up</plat-link></p>
-        <div class="logo">
-            <img src="../../images/ontracklogocolor.png">
-        </div>
     </div>
     <div class="login-bottom-container">
         <img src="../../images/ontracklogowhite.png">
