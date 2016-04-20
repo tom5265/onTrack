@@ -12,17 +12,17 @@ export default class NewtaskViewControl extends BaseViewControl {
 
 
     context: any = {
+        checkpointInput: "",
         UID: '',
         SingleTask: {
             taskName: "",
-            taskObjectives: {}
+            taskObjectives: []
         }
     };
 
     postTask() {
         console.log(this.context.SingleTask.taskName);
         this.firebaserepo.postUserTask(this.context.SingleTask);
-
         this.navigator.navigate(HomeViewControl, {
             parameters: {
                 id: this.context.UID
@@ -37,8 +37,18 @@ export default class NewtaskViewControl extends BaseViewControl {
         this.context.UID = parameters.id;
     }
 
-    addCheckpoint() {
-        jQuery('.checkpoint-container').append('<input type="text" placeholder="Checkpoint">');
+    addCheckpoint() {    
+        let input = this.context.checkpointInput;
+        if(this.context.checkpointInput === ""){
+            alert('No Checkpoint Entered!');
+        }else{
+            this.context.SingleTask.taskObjectives.push(input);
+            console.log(this.context.SingleTask.taskObjectives);
+            jQuery('.created-checkpoint-container').append("<p class='created-checkpoint'>" + input + "</p>")
+            jQuery('#checkpoint-input').val("");
+        }
+        
+        
     }
 }
 

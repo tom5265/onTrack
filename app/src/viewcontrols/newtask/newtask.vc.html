@@ -5,19 +5,20 @@
     
     <div class="new-task-middle">
         <div class="task-name-container">
-            <input type="text" placeholder="Task Name" plat-bind="SingleTask.taskName">
+            <h3>Name Your Task</h3>
+            <plat-input type="text" placeholder="Task Name" plat-bind="SingleTask.taskName">
         </div>
         <h3>Create Your Checkpoints</h3>
+        <div class="created-checkpoint-container">
+        </div>
         <div class="checkpoint-container">
-            <input type="text" placeholder="Checkpoint" plat-bind="SingleTask.taskObjectives.one">
-            <input type="text" placeholder="Checkpoint" plat-bind="SingleTask.taskObjectives.two">
-            <input type="text" placeholder="Checkpoint" plat-bind="SingleTask.taskObjectives.three"> 
+            <plat-input type="text" placeholder="Checkpoint" plat-bind='checkpointInput' id="checkpoint-input">
         </div>
         <div class="checkpoint-add">
             <button plat-tap="addCheckpoint()">Add Checkpoint</button>
         </div>  
         
-        <button plat-tap="postTask()">Save</button>
+        <button plat-tap="postTask()" class="save-task-button">Save</button>
     </div>
 </div>
 

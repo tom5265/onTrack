@@ -28,7 +28,7 @@ export default class FirebaseRepository extends BaseRepository {
     }
     
     postUserTask(task:Object){
-        console.log('repo says');
+        console.log(task);
         this.firebaservice.postUserTask(task)
     }
     
