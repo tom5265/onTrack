@@ -4,6 +4,7 @@ import RegisterViewControl from '../viewcontrols/register/register.vc';
 import LoginViewControl from '../viewcontrols/login/login.vc';
 import WelcomeViewControl from '../viewcontrols/welcome/welcome.vc';
 import NewTaskViewControl from '../viewcontrols/newtask/newtask.vc';
+import SuggestionsViewControl from '../viewcontrols/suggestions/suggestions.vc';
 
 
 export default class MyApp extends App {
@@ -18,7 +19,8 @@ export default class MyApp extends App {
             { pattern: '/register', view: RegisterViewControl },
             { pattern: '/welcome', view: WelcomeViewControl },
             { pattern: '/newtask/:id', view: NewTaskViewControl },
-            { pattern: '/home/:id', view: HomeViewControl}
+            { pattern: '/home/:id', view: HomeViewControl},
+            { pattern: '/suggestions', view: SuggestionsViewControl }
         ]);
     }
 

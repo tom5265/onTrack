@@ -1,1 +1,15 @@
 <h1>Hello World!</h1>
+<div class="container">
+    <h1>DIY Project Ideas</h1>
+    <h4>See what others are doing or find a new project.</h4>
+     <div class="img-container"><img src="../../images/tumblr_nrzvmyIdCo1qece2io1_1280.jpg"></div>
+    <plat-foreach class="reddit-container" plat-context="reddits">
+        <div class="reddits">
+            <h2>{{title}}</h2>
+            <h4>{{author}}</h4>
+            <p><{{id}}</p>
+            <p>{{selftext}}</p>
+            <plat-button class="button-success" plat-tap="readMore(id)">Read More..</plat-button>
+        </div>
+     </plat-foreach>
+</div>
