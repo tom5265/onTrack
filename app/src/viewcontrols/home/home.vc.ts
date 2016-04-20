@@ -17,13 +17,17 @@ export default class HomeViewControl extends BaseViewControl {
     }
 
   initialize(){
-      console.log('inits');
+
   }
   
   navigatedTo(parameters: { id: string; }) {
     this.context.userSpecificId = parameters.id;
-    console.log(this.context.userSpecificId);
-    this.firebaserepo.getUserTasks(this.context.UserSpecificId);
+    // this.firebaserepo.getUserTasks(this.context.UserSpecificId);
+    this.myDataRefPosts.on("child_added", function(snapshot, prevChildKey) {
+    var newPost = snapshot.val();
+    console.log(newPost);
+    });
+
   };
   
   
@@ -35,9 +39,10 @@ export default class HomeViewControl extends BaseViewControl {
           
       });
   }
+  
+  
 
-
+myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId)
 }
-// var myDataRefUsers = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/users');
-// var myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/posts');
+
 register.viewControl('home-vc', HomeViewControl, [FirebaseRepository]);

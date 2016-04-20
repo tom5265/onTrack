@@ -20,7 +20,6 @@ export default class LoginViewControl extends BaseViewControl {
         let email: string = jQuery('#emailInput').val();
         let password: string = jQuery('#passwordInput').val();
         this.firebaserepo.logInUser(email, password).then((success: any) => {
-            console.log(success.uid);
             let UID = success.uid;
             this.navigator.navigate(HomeViewControl, {
                 parameters: {
