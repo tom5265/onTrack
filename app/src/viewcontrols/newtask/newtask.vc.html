@@ -4,7 +4,17 @@
     </div>
     
     <div class="new-task-middle">
-        <input type="text" placeholder="Task Name" plat-bind="taskName">
+        <div class="task-name-container">
+            <input type="text" placeholder="Task Name" plat-bind="taskName">
+        </div>
+        <h3>Create Your Checkpoints</h3>
+        <div class="checkpoint-container">
+            <input type="text" placeholder="Checkpoint" plat-bind="checkpoints[0]">
+            <input type="text" placeholder="Checkpoint" plat-bind="checkpoints[1]">
+            <input type="text" placeholder="Checkpoint" plat-bind="checkpoints[2]"> 
+            <button plat-tap="addCheckpoint()">Add Checkpoint</button>
+        </div>
+        
         <button plat-tap="postTask()">Save</button>
     </div>
 </div>

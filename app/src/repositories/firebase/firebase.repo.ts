@@ -34,9 +34,9 @@ export default class FirebaseRepository extends BaseRepository {
         return this.firebaservice.logInUser(email, password);
     }
     
-    postUserTask(taskName: string, userId:string){
+    postUserTask(taskName: string){
         console.log('repo says' + userId)
-        this.firebaservice.postUserTask(taskName, userId)
+        this.firebaservice.postUserTask(taskName)
     }
     
 }

@@ -11,18 +11,23 @@ export default class NewtaskViewControl extends BaseViewControl {
 
     context: any = {
         taskName: "",
+        checkpoints: [],
         userId: ""
     };
     
     postTask(){
+        console.log(this.context.checkpoints);
+        this.firebaserepo.postUserTask(this.context.taskName);
         this.navigator.navigate(HomeViewControl);
-        this.firebaserepo.postUserTask(this.context.taskName, this.context.userId);
     }
     
     navigatedTo(parameters: { id: string; }){
-        console.log('nav to newtask');
         console.log(parameters.id);
         this.context.userId = parameters.id;
+    }
+    
+    addCheckpoint(){
+        
     }
 }
 
