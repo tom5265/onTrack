@@ -27,6 +27,6 @@ export default class HomeViewControl extends BaseViewControl {
 
 
 }
-var myDataRefUsers = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/users');
-var myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/posts');
+// var myDataRefUsers = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/users');
+// var myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/rest/posts');
 register.viewControl('home-vc', HomeViewControl);

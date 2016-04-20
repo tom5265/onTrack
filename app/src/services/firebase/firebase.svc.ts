@@ -1,6 +1,8 @@
 import {async, register} from 'platypus';
 import BaseService from '../base/base.svc';
 
+let UID:any = [];
+
 export default class FirebaseService extends BaseService {
 
 
@@ -34,6 +36,7 @@ export default class FirebaseService extends BaseService {
                 if (error) {
                     reject(error);
                 } else {
+                    UID.push(authData.uid)
                     resolve(authData);
                 }
             });
@@ -42,7 +45,7 @@ export default class FirebaseService extends BaseService {
 
     postUserTask(taskName: string) {
         console.log(taskName);
-        myDataRef.push({
+        myDataRefPosts.push({
             task: taskName
         })
     }
@@ -53,7 +56,9 @@ export default class FirebaseService extends BaseService {
 
 }
 
-var myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com/');
+var myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com');
+var myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + UID[0]);
+
 
 
 register.injectable('firebase-svc', FirebaseService);
