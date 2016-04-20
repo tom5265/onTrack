@@ -41,11 +41,11 @@ export default class FirebaseService extends BaseService {
         });
         })
     }
-    postUserTask(taskName:string){
+    postUserTask(taskName:string): async.IThenable<any>{
         console.log(taskName);
         return new Promise((resolve, reject) => {
             myDataRef.push({
-            task: taskName
+                task: taskName
             }, function (error, success) {
                 if(error){
                     console.log(error)
