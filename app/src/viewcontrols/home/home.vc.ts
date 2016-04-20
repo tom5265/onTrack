@@ -8,7 +8,7 @@ export default class HomeViewControl extends BaseViewControl {
   templateString: string = require('./home.vc.html');
 
   context: any = {
-      currentTasks: ["Make Birdhouse", "Complete the bench in the backyard"],
+      currentTasks: null,
       userSpecificId: ''
   };
   
@@ -21,12 +21,19 @@ export default class HomeViewControl extends BaseViewControl {
   }
   
   navigatedTo(parameters: { id: string; }) {
+    var tempArray:Array<any> = [];
     this.context.userSpecificId = parameters.id;
-    // this.firebaserepo.getUserTasks(this.context.UserSpecificId);
+    console.log(this.myDataRefPosts);
     this.myDataRefPosts.on("child_added", function(snapshot, prevChildKey) {
     var newPost = snapshot.val();
-    console.log(newPost);
+    for(let prop in newPost){
+         console.log(((newPost[prop].task.taskName)));
+         let name = newPost[prop].task.taskName;
+         tempArray.push(name);
+    }
     });
+    this.context.currentTasks = tempArray;
+    
 
   };
   
