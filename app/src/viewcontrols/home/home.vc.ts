@@ -22,9 +22,10 @@ export default class HomeViewControl extends BaseViewControl {
   
   navigatedTo(parameters: { id: string; }) {
     var tempArray:Array<any> = [];
+    let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId)
     this.context.userSpecificId = parameters.id;
-    console.log(this.myDataRefPosts);
-    this.myDataRefPosts.on("child_added", function(snapshot, prevChildKey) {
+    console.log(myDataRefPosts);
+    myDataRefPosts.on("child_added", function(snapshot, prevChildKey) {
     var newPost = snapshot.val();
     for(let prop in newPost){
          console.log(((newPost[prop].task.taskName)));
@@ -49,7 +50,6 @@ export default class HomeViewControl extends BaseViewControl {
   
   
 
-myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.context.userSpecificId)
 }
 
 register.viewControl('home-vc', HomeViewControl, [FirebaseRepository]);
