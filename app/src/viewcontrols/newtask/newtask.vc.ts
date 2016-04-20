@@ -10,9 +10,11 @@ export default class NewtaskViewControl extends BaseViewControl {
     }
 
     context: any = {
-        newTask: {
+        SingleTask: {
             taskName: "",
-            checkpoints: []
+            taskObjectives: {
+                
+            }
         }
     };
     
