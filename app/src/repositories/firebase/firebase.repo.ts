@@ -5,7 +5,7 @@ import * as jQuery from 'jquery';
 
 
 export default class FirebaseRepository extends BaseRepository {
-
+    
     constructor(private firebaservice: firebaseservice) {
         super();
     };
@@ -22,15 +22,16 @@ export default class FirebaseRepository extends BaseRepository {
         });
     }
     
-    logInUser(email:string, password: string) {
+    logInUser(email:string, password: string): async.IThenable<any> {
         console.log('working');
-        return new Promise((resolve, reject) => {
-            this.firebaservice.logInUser(email, password).then((success: any) => {
-                resolve(success);
-            }, (err: any) => {
-                reject(err);
-            })
-        })
+        // return new Promise((resolve, reject) => {
+        //     this.firebaservice.logInUser(email, password).then((success: any) => {
+        //         resolve(success);
+        //     }, (err: any) => {
+        //         reject(err);
+        //     })
+        // })
+        return this.firebaservice.logInUser(email, password);
     }
     
     postUserTask(taskName: string, userId:string){
