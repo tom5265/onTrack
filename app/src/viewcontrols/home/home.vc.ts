@@ -7,12 +7,18 @@ export default class HomeViewControl extends BaseViewControl {
   templateString: string = require('./home.vc.html');
 
   context: any = {
-      currentTasks: ["Make Birdhouse", "Complete the bench in the backyard"]
+      currentTasks: ["Make Birdhouse", "Complete the bench in the backyard"],
+      userSpecificId: ''
   };
 
   initialize(){
-      console.log('hello world');
+      console.log('inits');
   }
+  
+  navigatedTo(parameters: { id: string; }) {
+    this.context.userSpecificId = parameters.id;
+    console.log(this.context.userSpecificId);
+  };
   
   
   addNewTask(){

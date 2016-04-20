@@ -13,11 +13,9 @@ export default class FirebaseRepository extends BaseRepository {
     createUser(email: string, password: string) {
         return new Promise((resolve, reject) => {
             this.firebaservice.createUser(email, password).then((success: any) => {
-                console.log('success')
-                console.log(success);
                 resolve(success);
             }, (err: any) => {
-                console.log('something went wrong!');
+                console.log('something went wrong in the repo!');
                 console.log(err);
                 reject(err);
             });
@@ -28,8 +26,6 @@ export default class FirebaseRepository extends BaseRepository {
         console.log('working');
         return new Promise((resolve, reject) => {
             this.firebaservice.logInUser(email, password).then((success: any) => {
-                console.log('success');
-                console.log(success);
                 resolve(success);
             }, (err: any) => {
                 reject(err);
@@ -38,7 +34,7 @@ export default class FirebaseRepository extends BaseRepository {
     }
     
     postUserTask(taskName: string){
-        this.firebaservice.postUserTask(taskName);
+        this.firebaservice.postUserTask(taskName)
     }
     
 }

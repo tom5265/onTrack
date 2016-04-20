@@ -15,20 +15,18 @@ export default class LoginViewControl extends BaseViewControl {
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
-    
+
     logInUser() {
         let email: string = jQuery('#emailInput').val();
         let password: string = jQuery('#passwordInput').val();
-        this.authenticate(email, password);
-        
-    }
-
-    authenticate(email:string , password:string) {
-        console.log('step1');
         this.firebaserepo.logInUser(email, password).then((success: any) => {
-            console.log('logging in..');
-            this.navigator.navigate(HomeViewControl);
-            // this.context.uid = success.uid;
+            console.log(success.uid);
+            let UID = success.uid;
+            this.navigator.navigate(HomeViewControl, {
+                parameters: {
+                    id: UID
+                }
+            });
         }, (err: any) => {
             console.log('something went wrong!');
             this.wrongPassword();
