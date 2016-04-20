@@ -15,8 +15,8 @@ export default class NewtaskViewControl extends BaseViewControl {
     };
     
     postTask(){
-        this.navigator.navigate(HomeViewControl);
         this.firebaserepo.postUserTask(this.context.taskName, this.context.userId);
+        this.navigator.navigate(HomeViewControl);
     }
     
     navigatedTo(parameters: { id: string; }){
