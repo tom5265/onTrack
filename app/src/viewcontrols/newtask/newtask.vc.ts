@@ -2,6 +2,7 @@ import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import HomeViewControl from '../../viewcontrols/home/home.vc';
+import * as jQuery from 'jquery';
 
 export default class NewtaskViewControl extends BaseViewControl {
     templateString: string = require('./newtask.vc.html');
@@ -12,15 +13,13 @@ export default class NewtaskViewControl extends BaseViewControl {
     context: any = {
         SingleTask: {
             taskName: "",
-            taskObjectives: {
-                
-            }
+            taskObjectives: {}
         }
     };
     
     postTask(){
-        console.log(this.context.checkpoints);
-        this.firebaserepo.postUserTask(this.context.newTask);
+        console.log(this.context.SingleTask.taskName);
+        this.firebaserepo.postUserTask(this.context.SingleTask);
         this.navigator.navigate(HomeViewControl);
     }
     
@@ -30,7 +29,7 @@ export default class NewtaskViewControl extends BaseViewControl {
     }
     
     addCheckpoint(){
-        
+        jQuery('.checkpoint-container').append('<input type="text" placeholder="Checkpoint">');
     }
 }
 
