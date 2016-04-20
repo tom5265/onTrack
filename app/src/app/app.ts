@@ -17,7 +17,7 @@ export default class MyApp extends App {
             { pattern: '/login', view: LoginViewControl }, 
             { pattern: '/register', view: RegisterViewControl },
             { pattern: '/welcome', view: WelcomeViewControl },
-            { pattern: '/newtask', view: NewTaskViewControl },
+            { pattern: '/newtask/:id', view: NewTaskViewControl },
             { pattern: '/home/:id', view: HomeViewControl}
         ]);
     }

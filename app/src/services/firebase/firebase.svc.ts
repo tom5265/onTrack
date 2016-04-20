@@ -40,11 +40,15 @@ export default class FirebaseService extends BaseService {
         })
     }
 
-    postUserTask(taskName: string) {
-        console.log(taskName);
-        myDataRef.push({
-            task: taskName
+    postUserTask(taskName: string, userId:string) {
+        myUsersData.set({
+            task:taskName
         })
+        // let mySpecificDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com/' + userId)
+        // mySpecificDataRef.push({
+        //     task: taskName
+            
+        // })
     }
     
     getUserTasks() {
@@ -54,6 +58,7 @@ export default class FirebaseService extends BaseService {
 }
 
 var myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com/');
+var myUsersData = new Firebase('https://popping-inferno-1046.firebaseIO.com/users')
 
 
 register.injectable('firebase-svc', FirebaseService);
