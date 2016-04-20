@@ -1,19 +1,22 @@
 import {async, register} from 'platypus';
 import BaseService from '../base/base.svc';
 
-let UID:any = [];
+
 
 export default class FirebaseService extends BaseService {
 
+    private UID: string;
+    private myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com');
+    private myDataRefPosts: Firebase;
 
     createUser(email: string, password: string): async.IThenable<any> {
         var accountName = email;
         var accountPassword = password;
         return new Promise((resolve, reject) => {
-            myDataRef.createUser({
+            this.myDataRef.createUser({
                 email: accountName,
                 password: accountPassword
-            }, function (error, userData) {
+            }, (error, userData) => {
                 if (error) {
                     console.log("Error creating user:", error);
                     alert('Username was invalid or already taken!');
@@ -29,14 +32,15 @@ export default class FirebaseService extends BaseService {
         let accountName = email;
         let accountPassword = password;
         return new Promise((resolve, reject) => {
-            myDataRef.authWithPassword({
+            this.myDataRef.authWithPassword({
                 email: email,
                 password: password
-            }, function (error, authData) {
+            }, (error, authData) => {
                 if (error) {
                     reject(error);
                 } else {
-                    UID.push(authData.uid)
+                    this.UID = authData.uid;
+                    this.myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.UID);
                     resolve(authData);
                 }
             });
@@ -45,7 +49,7 @@ export default class FirebaseService extends BaseService {
 
     postUserTask(taskName: string) {
         console.log(taskName);
-        myDataRefPosts.push({
+        this.myDataRefPosts.push({
             task: taskName
         })
     }
@@ -56,8 +60,7 @@ export default class FirebaseService extends BaseService {
 
 }
 
-var myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com');
-var myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + UID[0]);
+
 
 
 
