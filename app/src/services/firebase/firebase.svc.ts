@@ -24,7 +24,7 @@ export default class FirebaseService extends BaseService {
             });
         });
     }
-    logInUser(email: string, password: string) {
+    logInUser(email: string, password: string): async.IThenable<any> {
         let accountName = email;
         let accountPassword = password;
         return new Promise((resolve, reject) => {
