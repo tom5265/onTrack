@@ -11,8 +11,7 @@ export default class NewtaskViewControl extends BaseViewControl {
 
     context: any = {
         taskName: "",
-        checkpoints: [],
-        userId: ""
+        checkpoints: []
     };
     
     postTask(){
