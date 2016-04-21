@@ -29,6 +29,7 @@
         "app/src/services/reddit/reddit.svc.ts",
         "app/src/viewcontrols/base/base.vc.ts",
         "app/src/viewcontrols/home/home.vc.ts",
+        "app/src/viewcontrols/landingpage/landingpage.vc.ts",
         "app/src/viewcontrols/login/login.vc.ts",
         "app/src/viewcontrols/newtask/newtask.vc.ts",
         "app/src/viewcontrols/register/register.vc.ts",
