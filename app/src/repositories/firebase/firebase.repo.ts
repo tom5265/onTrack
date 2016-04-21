@@ -23,7 +23,6 @@ export default class FirebaseRepository extends BaseRepository {
     }
     
     logInUser(email:string, password: string): async.IThenable<any> {
-        console.log('working');
         return this.firebaservice.logInUser(email, password);
     }
     
