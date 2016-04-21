@@ -2,9 +2,17 @@
     <div class="form-container">
         <h4>Log In</h4>
         <p>Welcome Back! Log-in here.</p>
-        <plat-input type="text" placeholder="email" id="emailInput"></plat-input>
+        <plat-input type="text" placeholder="email" id="emailInput" plat-tap="removeInvalid()"></plat-input>
         <br>
         <plat-input type="password" placeholder="password" id="passwordInput" plat-tap="removeInvalid()"></plat-input>
+        <!--HIDDEN DIV USED TO DISPLAY WRONG PASSWORD -->
+        <plat-if plat-options="{ condition: wrongPassword }"> 
+            <div class='invalid'>Invalid Password</div>
+        </plat-if>
+        <!--HIDDEN DIV USED TO DISPLAY WRONG EMAIL -->
+        <plat-if plat-options="{ condition: wrongEmail }"> 
+            <div class='invalid'>Invalid Email</div>
+        </plat-if>
         <br>
         <plat-button plat-tap="logInUser()" class="button-primary button-outline log-btn">Log-In</plat-button>
         <br>

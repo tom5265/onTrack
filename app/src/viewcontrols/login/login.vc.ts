@@ -9,6 +9,8 @@ export default class LoginViewControl extends BaseViewControl {
     templateString: string = require('./login.vc.html');
 
     context: any = {
+        wrongPassword: false,
+        wrongEmail: false,
         register: RegisterViewControl
     };
     
@@ -17,6 +19,14 @@ export default class LoginViewControl extends BaseViewControl {
     }
 
     logInUser() {
+        //hides wrong info divs in case in case they are showing
+        if(this.context.wrongPassword === true){
+            this.context.wrongPassword = false;
+        }
+        if(this.context.wrongEmail === true){
+            this.context.wrongEmail = false;
+        }
+        
         let email: string = jQuery('#emailInput').val();
         let password: string = jQuery('#passwordInput').val();
         this.firebaserepo.logInUser(email, password).then((success: any) => {
@@ -27,19 +37,23 @@ export default class LoginViewControl extends BaseViewControl {
                 }
             });
         }, (err: any) => {
-            console.log('something went wrong!');
-            this.wrongPassword();
+            //checks to see what exact error was thrown
+            switch(err.code){
+                case "INVALID_EMAIL":
+                    this.context.wrongEmail = true;
+                    break;
+                case "INVALID_PASSWORD":
+                    this.context.wrongPassword = true;
+                    break;
+            }
         });
 
     }
-    
-    //displays div when password is wrong
-    wrongPassword(){
-        jQuery('#passwordInput').after("<div class='invalid-password'>Invalid Password</div>");
-    }
-    //when the user clicks the password input the invalid password div is removed
+
+    //when the user clicks the password or email input the invalid info div is removed
     removeInvalid(){
-        jQuery(".invalid-password").remove();
+        this.context.wrongPassword = false;
+        this.context.wrongEmail = false;
     }
 
 }
