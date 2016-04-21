@@ -26,7 +26,6 @@ export default class HomeViewControl extends BaseViewControl {
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
             let data = snapshot.val();
             for (let key in data) {
-                console.log(data);
                 let task = {
                     postkey: key,
                     taskname: data[key].task.taskName,
@@ -42,6 +41,7 @@ export default class HomeViewControl extends BaseViewControl {
 
 
     addNewTask() {
+<<<<<<< HEAD
         // this.navigator.navigate(NewTaskViewControl, {
         //     parameters: {
         //         id: this.context.userSpecificId
@@ -50,6 +50,13 @@ export default class HomeViewControl extends BaseViewControl {
         // });
         console.log(this.context.allPosts)
 
+=======
+        this.navigator.navigate(NewTaskViewControl, {
+            parameters: {
+                id: this.context.userSpecificId
+            }
+        });
+>>>>>>> 1d5551d725a607d03f8609da9deb7a9a819da5f4
     }
 
 
