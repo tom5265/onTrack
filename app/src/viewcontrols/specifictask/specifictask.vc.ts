@@ -7,33 +7,39 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     templateString: string = require('./specifictask.vc.html');
 
     context: any = {
-        specificTask: '',
+        specificTask: null,
         post: []
     };
-    
+
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
-    
+
     navigatedTo(parameters: { key: string; }) {
-        let tempArray:any = [];
-        this.context.specificTask = parameters.key;
-        let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + this.context.specificTask);
+        let tempArray: any = null;
+        let key = parameters.key;
+        let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + key);
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
             let data = snapshot.val();
-            for (let key in data) {
-                let task = {
-                    postkey: key,
-                    taskname: data[key].task.taskName,
-                    taskobjectives: data[key].task.taskObjectives
-                }
-            tempArray.push(task);
-                
+            let task = {
+                postkey: key,
+                taskname: data.task.taskName,
+                taskobjectives: data.task.taskObjectives
             }
-            this.context.post = tempArray;
-        });
-
+            console.log(task);
+            this.context.specificTask = task;
+        })
     };
-}
+
+
+
+    // navigatedTo(parameters: { key: string, id: string }) {
+    // console.log(parameters.key);
+    // console.log(parameters.id);
+
+    // }
+
+
+};
 
 register.viewControl('specifictask-vc', SpecifictaskViewControl, [FirebaseRepository]);

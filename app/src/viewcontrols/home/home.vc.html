@@ -4,7 +4,7 @@
         <plat-foreach plat-context="allPosts">    
             <div class="current-task-container row">
                 <div class="current-task col-phn-12">
-                    <a href="/home/{{uid}}/{{postkey}}"><p>{{taskname}}</p></a>
+                    <p plat-tap="navToSpecificPost(postkey)">{{taskname}}</p>
                 </div>
             </div>
         </plat-foreach>

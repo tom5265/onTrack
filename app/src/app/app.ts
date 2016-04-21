@@ -22,7 +22,6 @@ export default class MyApp extends App {
             { pattern: '/newtask/:id', view: NewTaskViewControl },
             { pattern: '/home/:id', view: HomeViewControl},
             { pattern: '/suggestions', view: SuggestionsViewControl },
-            { pattern: '/specifictask', view: SpecificTaskViewControl },
             { pattern: '/home/:id/:key', view: SpecificTaskViewControl }
         ]);
     }
