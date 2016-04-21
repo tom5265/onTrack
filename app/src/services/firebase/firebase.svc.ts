@@ -1,4 +1,4 @@
-import {async, register} from 'platypus';
+import {async, register, storage} from 'platypus';
 import BaseService from '../base/base.svc';
 
 
@@ -40,13 +40,16 @@ export default class FirebaseService extends BaseService {
                     reject(error);
                 } else {
                     this.UID = authData.uid;
-                    this.myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.UID);
+                    this.setSpecificRef(this.UID);
                     resolve(authData);
                 }
             });
         })
     }
 
+    setSpecificRef(uid:string) {
+       this.myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + uid);
+    }
 
     postUserTask(taskName:Object) {
         console.log(taskName);
