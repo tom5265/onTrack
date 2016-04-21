@@ -43,11 +43,11 @@
                 input{
                     width: 75%;
                     .border-radius(0);
+                    border-bottom: 2px solid @PrimaryBlue;
                 }
             }
             .checkpoint-add{
-                margin: 0 auto;
-                margin-top: 3%;
+                padding: 1%;
                 button{
                     color: @PrimaryBlue;
                     background-color: white;
@@ -60,23 +60,52 @@
             .created-checkpoint-container{
                 width: 100%;
                 margin: auto;
+                background-color: @PrimaryBlue;
+                .border-radius;
+                
+                #empty-paragraph{
+                    font-family: @Oswald;
+                    font-weight: 400;
+                    color: white;
+                    font-style: italic;
+                    padding-top: 0;
+                    padding: 2%;
+                }
                 
                 .created-checkpoint{
-                    color: @PrimaryBlue;
-                    border-bottom: 1px dashed lightgray;
+                    color: white;
+                    font-family: @Oswald;
+                    font-weight: 400;
+                    padding-top: 0;
+                    padding: 2%;
+                }
+                
+                .time-container{
+                    input{
+                        width: 50%;
+                        .border-radius(0)
+                    }
                 }
             }
             
+                    
+        }
+        .save-task-container{
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            padding-bottom: 5%;
             .save-task-button{
-                margin-top: 5%;
-                border: 2px solid @PrimaryGreen;
-                color: @PrimaryGreen;
-                font-family: @Oswald;
-                font-weight: 400;
-                font-size: 1.5em;
-                width: 30%;
-                background-color: white;
-            }
+                    margin: 0 auto;
+                    margin-top: 5%;
+                    border: 2px solid @PrimaryGreen;
+                    color: @PrimaryGreen;
+                    font-family: @Oswald;
+                    font-weight: 400;
+                    font-size: 1.5em;
+                    width: 30%;
+                    background-color: white;
+             }
         }
     }
 }

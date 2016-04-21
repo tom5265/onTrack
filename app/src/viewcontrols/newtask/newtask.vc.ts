@@ -42,6 +42,11 @@ export default class NewtaskViewControl extends BaseViewControl {
         if(this.context.checkpointInput === ""){
             alert('No Checkpoint Entered!');
         }else{
+            //deletes 'empty' paragraph if it's there
+            if(jQuery('#empty-paragraph').length !== 0){
+                console.log('deleting empty paragraph');
+                jQuery('#empty-paragraph').remove();
+            }
             this.context.SingleTask.taskObjectives.push(input);
             console.log(this.context.SingleTask.taskObjectives);
             jQuery('.created-checkpoint-container').append("<p class='created-checkpoint'>" + input + "</p>")

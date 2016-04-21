@@ -8,16 +8,22 @@
             <h3>Name Your Task</h3>
             <plat-input type="text" placeholder="Task Name" plat-bind="SingleTask.taskName"></plat-input>
         </div>
-        <h3>Create Your Checkpoints</h3>
+        <h3>Checkpoints</h3>
         <div class="created-checkpoint-container">
+            <p id="empty-paragraph">Empty</p>
         </div>
-        <div class="checkpoint-container">
-            <plat-input type="text" placeholder="Checkpoint" plat-bind='checkpointInput' id="checkpoint-input"></plat-input>
+        <div class="checkpoint-container row">
+            <plat-input class="col-phn-9" type="text" placeholder="Checkpoint" plat-bind='checkpointInput' id="checkpoint-input"></plat-input>
+            <div class="col-phn-3 checkpoint-add">
+                <button plat-tap="addCheckpoint()">Add Checkpoint</button>
+            </div>
         </div>
-        <div class="checkpoint-add">
-            <button plat-tap="addCheckpoint()">Add Checkpoint</button>
-        </div>  
-        
+        <div class="time-container">
+            <h3>Completion Date</h3>
+                <plat-input type="text" placeholder="Date (MM/DD/YY)">
+        </div>
+    </div>
+    <div class="save-task-container">
         <button plat-tap="postTask()" class="save-task-button">Save</button>
     </div>
 </div>
