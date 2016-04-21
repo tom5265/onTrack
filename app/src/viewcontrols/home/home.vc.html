@@ -1,10 +1,10 @@
 <div class="home-main-container">
     <h1>Tasks</h1>
     <div class="current-task-parent-container">
-        <plat-foreach plat-context="currentTasks">    
+        <plat-foreach plat-context="allPosts">    
             <div class="current-task-container row">
                 <div class="current-task col-phn-12">
-                    <p>{{@context}}</p>
+                    <p>{{taskname}}</p>
                 </div>
             </div>
         </plat-foreach>
