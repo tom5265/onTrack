@@ -4,6 +4,7 @@
     #platui > #variables;
 
     [plat-control="newtask-vc"] {
+    
     .new-task-main-container{
        width: 100%;
        
@@ -57,11 +58,25 @@
                 }
             }
             
-            .created-checkpoint-container{
+            #created-checkpoint-container{
                 width: 100%;
+                height: 100%;
                 margin: auto;
                 background-color: @PrimaryBlue;
                 .border-radius;
+                
+                #edit-checkpoints{
+                    width: 17%;
+                    border: none;
+                    background-color: white;
+                    font-size: .85em;
+                    color: gray;
+                    font-family: @Oswald;
+                    margin-top: 2%;
+                    display: none;
+                    padding: .5%;
+                    .border-radius;
+                }
                 
                 #empty-paragraph{
                     font-family: @Oswald;
@@ -73,11 +88,19 @@
                 }
                 
                 .created-checkpoint{
-                    color: white;
-                    font-family: @Oswald;
-                    font-weight: 400;
-                    padding-top: 0;
                     padding: 2%;
+                    width: 80%;
+                    margin: auto;
+                    margin-top: 3%;
+                    margin-bottom: 3%;
+                    p{
+                        color: white;
+                        font-family: @Oswald;
+                        font-weight: 400;
+                        padding-top: 0;
+                        display: inline;
+                    }
+                    
                 }
                 
                 .time-container{
