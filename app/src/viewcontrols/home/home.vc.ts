@@ -8,6 +8,7 @@ export default class HomeViewControl extends BaseViewControl {
   templateString: string = require('./home.vc.html');
 
   context: any = {
+
       currentTasks: null,
       userSpecificId: ''
   };
@@ -29,7 +30,7 @@ export default class HomeViewControl extends BaseViewControl {
     var newPost = snapshot.val();
     console.log(newPost);
     for(let prop in newPost){
-         console.log(((newPost[prop].task.taskName)));
+         console.log(((newPost[prop].task)));
          let name = newPost[prop].task.taskName;
          tempArray.push(name);
     }
