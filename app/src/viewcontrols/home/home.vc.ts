@@ -41,22 +41,12 @@ export default class HomeViewControl extends BaseViewControl {
 
 
     addNewTask() {
-<<<<<<< HEAD
-        // this.navigator.navigate(NewTaskViewControl, {
-        //     parameters: {
-        //         id: this.context.userSpecificId
-        //     }
-
-        // });
-        console.log(this.context.allPosts)
-
-=======
         this.navigator.navigate(NewTaskViewControl, {
             parameters: {
                 id: this.context.userSpecificId
             }
         });
->>>>>>> 1d5551d725a607d03f8609da9deb7a9a819da5f4
+
     }
 
 
