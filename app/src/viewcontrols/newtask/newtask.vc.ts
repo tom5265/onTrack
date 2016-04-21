@@ -68,7 +68,7 @@ export default class NewtaskViewControl extends BaseViewControl {
     
     editCheckpoints(){
         //Save the edits and push them in the array
-        if(jQuery('#edit-checkpoints').text() === 'Save Edits'){
+        if(jQuery('#edit-checkpoints').text() === 'SAVE'){
             console.log('saving!');
             this.context.SingleTask.taskObjectives = [];
             let editedCheckpoints = jQuery('.created-checkpoint');
@@ -86,7 +86,7 @@ export default class NewtaskViewControl extends BaseViewControl {
         let editButton = document.getElementById('edit-checkpoints');
         for(let i = 0; i < checkpoints.length; i++){
             if(checkpoints[i].isContentEditable){
-                editButton.innerHTML = "Enabling Edit";
+                editButton.innerHTML = "EDIT";
                 checkpoints[i].contentEditable = "false";
                 jQuery(editButton).removeClass('save');
                 jQuery(checkpoints[i]).css('border', 'none')
@@ -94,7 +94,7 @@ export default class NewtaskViewControl extends BaseViewControl {
             }else{
                 console.log('now its editable');
                 checkpoints[i].contentEditable = "true";
-                editButton.innerHTML = "Save Edits";
+                editButton.innerHTML = "SAVE";
                 jQuery(editButton).addClass('save');
                 jQuery(checkpoints[i]).css('border', '1px dashed white');
             }
