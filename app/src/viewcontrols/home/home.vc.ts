@@ -11,7 +11,7 @@ export default class HomeViewControl extends BaseViewControl {
     context: any = {
         allPosts: [],
         currentTasks: null,
-        userSpecificId: ''
+        userSpecificId: '',
     };
 
     constructor(private firebaserepo: FirebaseRepository) {
@@ -29,8 +29,10 @@ export default class HomeViewControl extends BaseViewControl {
                 let task = {
                     postkey: key,
                     taskname: data[key].task.taskName,
-                    taskobjectives: data[key].task.taskObjectives
+                    taskobjectives: data[key].task.taskObjectives,
+                    uid: this.firebaserepo.userID
                 }
+                console.log(task);
             tempArray.push(task);
                 
             }
