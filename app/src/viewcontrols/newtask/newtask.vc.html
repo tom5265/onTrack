@@ -4,12 +4,15 @@
     </div>
     
     <div class="new-task-middle">
+        <!-- NAME TASK -->
         <div class="task-name-container">
             <h3>Name Your Task</h3>
             <plat-input type="text" placeholder="Task Name" plat-bind="SingleTask.taskName"></plat-input>
         </div>
+        <!-- CHECKPOINTS -->
         <h3>Checkpoints</h3>
-        <div class="created-checkpoint-container">
+        <div id="created-checkpoint-container">
+            <button id="edit-checkpoints" plat-tap="editCheckpoints()">Enable Editing</button>
             <p id="empty-paragraph">Empty</p>
         </div>
         <div class="checkpoint-container row">
@@ -18,6 +21,7 @@
                 <button plat-tap="addCheckpoint()">Add Checkpoint</button>
             </div>
         </div>
+        <!-- COMPLETION DATE -->
         <div class="time-container">
             <h3>Completion Date</h3>
                 <plat-input type="text" placeholder="Date (MM/DD/YY)">

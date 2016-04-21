@@ -12,6 +12,7 @@ export default class NewtaskViewControl extends BaseViewControl {
 
 
     context: any = {
+        checkpointEdits: [],
         checkpointInput: "",
         UID: '',
         SingleTask: {
@@ -30,7 +31,6 @@ export default class NewtaskViewControl extends BaseViewControl {
         })
     }
 
-
     navigatedTo(parameters: { id: string; }) {
         console.log(parameters.id);
         this.context.userId = parameters.id;
@@ -44,16 +44,58 @@ export default class NewtaskViewControl extends BaseViewControl {
         }else{
             //deletes 'empty' paragraph if it's there
             if(jQuery('#empty-paragraph').length !== 0){
-                console.log('deleting empty paragraph');
                 jQuery('#empty-paragraph').remove();
+                jQuery('#edit-checkpoints').show();
             }
             this.context.SingleTask.taskObjectives.push(input);
             console.log(this.context.SingleTask.taskObjectives);
-            jQuery('.created-checkpoint-container').append("<p class='created-checkpoint'>" + input + "</p>")
+            
+            //sets added checkpoint to be of correct iscontenteditable state
+            let elements = document.getElementsByClassName('created-checkpoint-cell');
+            let checkpoints: Array<HTMLDivElement> = [];
+            var ableToEdit: boolean
+            for (let i = 0; i < elements.length; i++) {
+                checkpoints.push(<HTMLDivElement>elements[i]);
+            }
+            if(!this.utils.isUndefined(checkpoints[0])){
+                ableToEdit = checkpoints[0].isContentEditable;
+            }
+            //appends checkpoint to DOM
+            jQuery('#created-checkpoint-container').append("<div class='created-checkpoint-cell' contenteditable='" + ableToEdit + "'><p contenteditable='inherit' class='created-checkpoint'>" + input + "</p></div>")
             jQuery('#checkpoint-input').val("");
         }
+    }
+    
+    editCheckpoints(){
+        //Save the edits and push them in the array
+        if(jQuery('#edit-checkpoints').text() === 'Save Edits'){
+            console.log('saving!');
+            this.context.SingleTask.taskObjectives = [];
+            let editedCheckpoints = jQuery('.created-checkpoint');
+            for(let i = 0; i < editedCheckpoints.length; i++){
+                this.context.SingleTask.taskObjectives.push(editedCheckpoints[i].textContent);
+                console.log(this.context.SingleTask.taskObjectives);
+            }
+        }
+        let elements = document.getElementsByClassName('created-checkpoint-cell');
+        let checkpoints: Array<HTMLDivElement> = [];
+        for (let i = 0; i < elements.length; i++) {
+            checkpoints.push(<HTMLDivElement>elements[i]);
+        }
         
-        
+        let editButton = document.getElementById('edit-checkpoints');
+        for(let i = 0; i < checkpoints.length; i++){
+            if(checkpoints[i].isContentEditable){
+                editButton.innerHTML = "Enabling Edit";
+                checkpoints[i].contentEditable = "false";
+            }else{
+                console.log('now its editable');
+                checkpoints[i].contentEditable = "true";
+                editButton.innerHTML = "Save Edits";
+                jQuery(editButton).addClass('save');
+                
+            }
+        }
     }
 }
 
