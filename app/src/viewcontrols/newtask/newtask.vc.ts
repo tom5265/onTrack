@@ -88,12 +88,15 @@ export default class NewtaskViewControl extends BaseViewControl {
             if(checkpoints[i].isContentEditable){
                 editButton.innerHTML = "Enabling Edit";
                 checkpoints[i].contentEditable = "false";
+                jQuery(editButton).removeClass('save');
+                jQuery(checkpoints[i]).css('border', 'none')
+                
             }else{
                 console.log('now its editable');
                 checkpoints[i].contentEditable = "true";
                 editButton.innerHTML = "Save Edits";
                 jQuery(editButton).addClass('save');
-                
+                jQuery(checkpoints[i]).css('border', '1px dashed white');
             }
         }
     }
