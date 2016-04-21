@@ -22,7 +22,6 @@ export default class NewtaskViewControl extends BaseViewControl {
     };
 
     postTask() {
-        console.log(this.context.SingleTask.taskName);
         this.firebaserepo.postUserTask(this.context.SingleTask);
         this.navigator.navigate(HomeViewControl, {
             parameters: {
@@ -37,19 +36,23 @@ export default class NewtaskViewControl extends BaseViewControl {
         this.context.UID = parameters.id;
     }
 
-    addCheckpoint() {    
+    addCheckpoint() {
         let input = this.context.checkpointInput;
-        if(this.context.checkpointInput === ""){
+        if (this.context.checkpointInput === "") {
             alert('No Checkpoint Entered!');
-        }else{
+        } else {
             //deletes 'empty' paragraph if it's there
-            if(jQuery('#empty-paragraph').length !== 0){
+            if (jQuery('#empty-paragraph').length !== 0) {
                 jQuery('#empty-paragraph').remove();
                 jQuery('#edit-checkpoints').show();
             }
-            this.context.SingleTask.taskObjectives.push(input);
+            let temp = {
+                objName: input,
+                isCompleted: false
+            }
+            this.context.SingleTask.taskObjectives.push(temp);
             console.log(this.context.SingleTask.taskObjectives);
-            
+
             //sets added checkpoint to be of correct iscontenteditable state
             let elements = document.getElementsByClassName('created-checkpoint-cell');
             let checkpoints: Array<HTMLDivElement> = [];
@@ -57,7 +60,7 @@ export default class NewtaskViewControl extends BaseViewControl {
             for (let i = 0; i < elements.length; i++) {
                 checkpoints.push(<HTMLDivElement>elements[i]);
             }
-            if(!this.utils.isUndefined(checkpoints[0])){
+            if (!this.utils.isUndefined(checkpoints[0])) {
                 ableToEdit = checkpoints[0].isContentEditable;
             }
             //appends checkpoint to DOM
@@ -65,15 +68,19 @@ export default class NewtaskViewControl extends BaseViewControl {
             jQuery('#checkpoint-input').val("");
         }
     }
-    
-    editCheckpoints(){
+
+    editCheckpoints() {
         //Save the edits and push them in the array
-        if(jQuery('#edit-checkpoints').text() === 'SAVE'){
+        if (jQuery('#edit-checkpoints').text() === 'SAVE') {
             console.log('saving!');
             this.context.SingleTask.taskObjectives = [];
             let editedCheckpoints = jQuery('.created-checkpoint');
-            for(let i = 0; i < editedCheckpoints.length; i++){
-                this.context.SingleTask.taskObjectives.push(editedCheckpoints[i].textContent);
+            for (let i = 0; i < editedCheckpoints.length; i++) {
+                let temp = {
+                    objName: editedCheckpoints[i].textContent,
+                    isCompleted: false
+                }
+                this.context.SingleTask.taskObjectives.push(temp);
                 console.log(this.context.SingleTask.taskObjectives);
             }
         }
@@ -82,16 +89,16 @@ export default class NewtaskViewControl extends BaseViewControl {
         for (let i = 0; i < elements.length; i++) {
             checkpoints.push(<HTMLDivElement>elements[i]);
         }
-        
+
         let editButton = document.getElementById('edit-checkpoints');
-        for(let i = 0; i < checkpoints.length; i++){
-            if(checkpoints[i].isContentEditable){
+        for (let i = 0; i < checkpoints.length; i++) {
+            if (checkpoints[i].isContentEditable) {
                 editButton.innerHTML = "EDIT";
                 checkpoints[i].contentEditable = "false";
                 jQuery(editButton).removeClass('save');
                 jQuery(checkpoints[i]).css('border', 'none')
-                
-            }else{
+
+            } else {
                 console.log('now its editable');
                 checkpoints[i].contentEditable = "true";
                 editButton.innerHTML = "SAVE";
