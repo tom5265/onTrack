@@ -4,6 +4,85 @@
     #platui > #variables;
 
     [plat-control="welcome-vc"] {
+        
+        @font-face {
+            font-family: "WorkSansExtraLight";
+            src: url("../fonts/WorkSans-ExtraLight.otf")
+        }
+
+        .main {
+            background: #83a4d4; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+            height: 100%;
+            width: 100%;   
+            font-family: "WorkSansExtraLight";                       
+        }
+        
+        .main-head {
+            color:#699df8;
+            font-size: 3vw;
+            text-align: center;
+            background-image: url(../images/bg.jpeg);
+            background-size: cover;
+            height: 20em;
+            
+            p {
+                margin: 0;
+                float: right;
+                clear: both;
+                text-align: center;
+                margin-top: 7em;
+                margin-right: 5.4em;
+                font-weight: light;
+            }
+            
+            img {
+                width: 40%;
+                height: auto;
+                margin-top: -0.5em;
+                float: right;
+                clear: both;
+                margin-right: 4em;
+            }
+        }
+        
+        .main-info {
+            height: auto;
+            padding-top: 4em;
+            padding-bottom: 4em;
+            text-align: center;
+            padding-right: 2vw;
+            padding-left: 2vw;
+        }
+        
+        
+        h4 {
+            margin: 0;
+            font-size: 2em;
+            padding: 0;
+            color: white;
+        }
+        
+        h3 {
+            padding: 0;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .tri-info {
+            text-align: center;
+            background-color: #fff;
+            padding: 3em 0;
+            p {
+                font-size: 1em;
+            }
+        }
+
+        .tri-img {
+            height: 6em;
+            width: 6em;
+        }
 
     }
 }

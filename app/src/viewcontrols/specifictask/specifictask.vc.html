@@ -1,1 +1,25 @@
-<h1>Specific Task</h1>
+<div class="home-main-container">
+    <h1>view the task</h1>
+    <div class="current-task-parent-container">
+        <div>    
+            <div class="current-task-container row">
+                <div class="current-task col-phn-12">
+                    <p>The current task is: {{specificTask.taskname}}</p>
+                    <plat-foreach plat-context="specificTask.taskobjectives">
+                        <p>{{@context}}</p>
+                    </plat-foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ADD NEW TASK -->
+    <!--<div class="add-task-container row">
+        <div class="plus-task col-phn-2" plat-tap="addNewTask()">
+            <h6>+</h6>
+        </div>
+        <div class="add-task col-phn-10">
+            <p>Add New Task</p>
+        </div>
+    </div>-->
+</div>

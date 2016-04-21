@@ -3,6 +3,7 @@ import BaseViewControl from '../base/base.vc';
 import * as jQuery from 'jquery';
 import NewTaskViewControl from '../../viewcontrols/newtask/newtask.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
+import SpecificTaskViewControl from '../../viewcontrols/specifictask/specifictask.vc';
 
 export default class HomeViewControl extends BaseViewControl {
 
@@ -11,7 +12,7 @@ export default class HomeViewControl extends BaseViewControl {
     context: any = {
         allPosts: [],
         currentTasks: null,
-        userSpecificId: ''
+        userSpecificId: '',
     };
 
     constructor(private firebaserepo: FirebaseRepository) {
@@ -29,8 +30,10 @@ export default class HomeViewControl extends BaseViewControl {
                 let task = {
                     postkey: key,
                     taskname: data[key].task.taskName,
-                    taskobjectives: data[key].task.taskObjectives
+                    taskobjectives: data[key].task.taskObjectives,
+                    uid: this.firebaserepo.userID
                 }
+                // console.log(task);
             tempArray.push(task);
                 
             }
@@ -38,6 +41,17 @@ export default class HomeViewControl extends BaseViewControl {
         });
 
     };
+    
+    navToSpecificPost(key:string){
+        let postkey = key;
+        let usersID = this.firebaserepo.userID;
+        this.navigator.navigate(SpecificTaskViewControl, {
+            parameters: {
+                key: postkey,
+                id: usersID
+            }
+        })
+    }
 
 
     addNewTask() {
