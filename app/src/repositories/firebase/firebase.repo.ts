@@ -9,6 +9,7 @@ export default class FirebaseRepository extends BaseRepository {
     constructor(private firebaservice: firebaseservice, private storage: storage.LocalStorage) {
         super();
         this.userID = this.storage.getItem('username');
+        this.firebaservice.setSpecificRef(this.userID);
     };
     
     public userID: string;
