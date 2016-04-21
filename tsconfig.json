@@ -32,6 +32,7 @@
         "app/src/viewcontrols/login/login.vc.ts",
         "app/src/viewcontrols/newtask/newtask.vc.ts",
         "app/src/viewcontrols/register/register.vc.ts",
+        "app/src/viewcontrols/specifictask/specifictask.vc.ts",
         "app/src/viewcontrols/suggestions/suggestions.vc.ts",
         "app/src/viewcontrols/welcome/welcome.vc.ts"
     ]
