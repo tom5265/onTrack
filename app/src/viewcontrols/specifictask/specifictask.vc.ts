@@ -15,7 +15,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         checkpoints: 0,
         completedCheckpoints: 0
     };
-    
+
     publickey = '';
 
     constructor(private firebaserepo: FirebaseRepository) {
@@ -44,9 +44,20 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             });
             // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
+
+            if (this.context.checkpoints > 0) {
+                console.log('o');
+                if (this.context.checkpoints === this.context.completedCheckpoints) {
+                    let bg = document.getElementById('color-bg');
+                    bg.style.backgroundColor = "rgba(201,278,114,0.1)";
+                } else {
+                    let bg = document.getElementById('color-bg')
+                    bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
+                }
+            }
         });
     };
-    
+
     someFunc() {
         let numberOfTrues = document.getElementsByClassName('true');
         this.context.completedCheckpoints = numberOfTrues.length;
@@ -54,6 +65,11 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         this.context.checkpoints = numberOfTasks.length;
         // console.log(this.context.specificTask.postkey);
         // console.log(this.context.specificTask);
+        if (numberOfTrues.length > 0) {
+            if (numberOfTrues == numberOfTasks) {
+                console.log('congrats');
+            } 
+        }
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
     }
 };

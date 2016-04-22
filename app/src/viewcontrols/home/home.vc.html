@@ -1,22 +1,21 @@
 <div class="home-main-container">
-    <h1>Tasks</h1>
+    <img src="../../images/ontracklogowhite.png">
     <div class="current-task-parent-container">
-        <plat-foreach plat-context="allPosts">    
+        <plat-foreach plat-context="allPosts">
             <div class="current-task-container row">
                 <div class="current-task col-phn-12">
-                    <p plat-tap="navToSpecificPost(postkey)">{{taskname}}</p>
+                    <p class="title" plat-tap="navToSpecificPost(postkey)">{{taskname}}</p>
+                    <p class="sub-title">{{taskobjectiveslength}} TASKS</p>
                 </div>
             </div>
         </plat-foreach>
+        <div class="add-task-container row">
+            <div class="plus-task col-phn-12" plat-tap="addNewTask()">
+                <h6>+</h6>
+            </div>
+        </div>
     </div>
-    
+
     <!-- ADD NEW TASK -->
-    <div class="add-task-container row">
-        <div class="plus-task col-phn-2" plat-tap="addNewTask()">
-            <h6>+</h6>
-        </div>
-        <div class="add-task col-phn-10">
-            <p>Add New Task</p>
-        </div>
-    </div>
+
 </div>
