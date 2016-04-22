@@ -12,7 +12,6 @@ export default class NewtaskViewControl extends BaseViewControl {
 
 
     context: any = {
-        checkpointEdits: [],
         checkpointInput: "",
         UID: '',
         SingleTask: {
@@ -22,12 +21,17 @@ export default class NewtaskViewControl extends BaseViewControl {
     };
 
     postTask() {
-        this.firebaserepo.postUserTask(this.context.SingleTask);
-        this.navigator.navigate(HomeViewControl, {
+        //checks if task name and checkpoints are empty
+        if(this.context.SingleTask.taskName !== "" && this.context.SingleTask.taskObjectives.length !== 0){
+            this.firebaserepo.postUserTask(this.context.SingleTask);
+            this.navigator.navigate(HomeViewControl, {
             parameters: {
                 id: this.context.UID
             }
-        })
+        })   
+        }else{
+            alert('Required fields are empty!');
+        }
     }
 
     navigatedTo(parameters: { id: string; }) {
