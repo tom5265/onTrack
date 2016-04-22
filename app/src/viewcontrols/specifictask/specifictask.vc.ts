@@ -36,6 +36,14 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             }
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
+            let numberCompleted = 0;
+            task.taskObjectives.forEach((obj: any) => {
+                if (obj.isCompleted) {
+                    numberCompleted++;
+                }
+            });
+            // console.log(numberCompleted);
+            this.context.completedCheckpoints = numberCompleted;
         });
     };
     
