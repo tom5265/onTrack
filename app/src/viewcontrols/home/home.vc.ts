@@ -34,7 +34,7 @@ export default class HomeViewControl extends BaseViewControl {
                     taskobjectiveslength: data[key].task.taskObjectives.length,
                     uid: this.firebaserepo.userID
                 }
-                console.log(task);
+                // console.log(task);
             tempArray.push(task);
                 
             }

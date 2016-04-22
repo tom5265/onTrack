@@ -18,7 +18,7 @@ export default class SuggestionsViewControl extends BaseViewControl {
 
     navigatedTo(): void {
         this.redditrepo.getAllReddits().then((success) => {
-            console.log(success);
+            // console.log(success);
             this.context.reddits = success;
         }, (err) => {
             console.log('something went wrong!');

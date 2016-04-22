@@ -45,9 +45,9 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
 
-            if (this.context.checkpoints > 0) {
-                console.log('o');
-                if (this.context.checkpoints === this.context.completedCheckpoints) {
+            if (numberCompleted > 0) {
+                // console.log('o');
+                if (task.taskObjectives.length === numberCompleted) {
                     let bg = document.getElementById('color-bg');
                     bg.style.backgroundColor = "rgba(201,278,114,0.1)";
                 } else {
