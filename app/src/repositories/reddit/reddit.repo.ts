@@ -20,7 +20,8 @@ containerArray: Array<any> = [];
                         author: post.data.author,
                         id: post.data.id,
                         url: post.data.url,
-                        selftext: post.data.selftext
+                        selftext: post.data.selftext,
+                        thumbnail: post.data.thumbnail
                     }
                     this.containerArray.push(redd);
                 });
