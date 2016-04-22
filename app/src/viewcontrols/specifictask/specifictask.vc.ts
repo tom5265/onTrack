@@ -1,7 +1,7 @@
 import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
-
+import * as jQuery from 'jquery';
 
 export default class SpecifictaskViewControl extends BaseViewControl {
     templateString: string = require('./specifictask.vc.html');
@@ -31,15 +31,13 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         })
     };
 
-
-
-    // navigatedTo(parameters: { key: string, id: string }) {
-    // console.log(parameters.key);
-    // console.log(parameters.id);
-
-    // }
-
-
+    toggleComplete() {
+        console.log('hi');
+        let taskTrue = jQuery(".task")
+        jQuery(taskTrue).toggleClass('true');
+        jQuery(taskTrue).toggleClass('false');
+    }
 };
+
 
 register.viewControl('specifictask-vc', SpecifictaskViewControl, [FirebaseRepository]);
