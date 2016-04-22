@@ -40,6 +40,21 @@
             box-shadow: 0 0 10px grey;
             position: relative;
         }
+        @-webkit-keyframes hop {
+            from {
+                -webkit-transform: scale(1.0);
+            }
+            50% {
+                -webkit-transform: scale(1.05);
+            }
+            to { 
+                -webkit-transform: scale(1.0);
+            }
+            }
+        .reddits:hover {
+            animation: hop 600ms ease-in-out;
+            -webkit-animation: hop 600ms ease-in-out;
+        }
         .main {
             background: #83a4d4; /* fallback for old browsers */
             background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */

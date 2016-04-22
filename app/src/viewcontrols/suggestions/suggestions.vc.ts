@@ -25,9 +25,8 @@ export default class SuggestionsViewControl extends BaseViewControl {
             console.log(err);
         });       
     }
-
-
-
+    
+    
 }
 
 register.viewControl('suggestions-vc', SuggestionsViewControl, [RedditRepository]);
