@@ -8,7 +8,9 @@ export default class SpecifictaskViewControl extends BaseViewControl {
 
     context: any = {
         specificTask: null,
-        post: []
+        post: [],
+        checkpoints: 0,
+        completedCheckpoints: 0
     };
 
     constructor(private firebaserepo: FirebaseRepository) {
@@ -29,11 +31,12 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             console.log(task);
             this.context.specificTask = task;
         })
+        
     };
 
     toggleComplete() {
-        console.log('hi');
-        let taskTrue = jQuery(".task")
+        let taskTrue = jQuery(".task");
+        console.log(this.context);
         jQuery(taskTrue).toggleClass('true');
         jQuery(taskTrue).toggleClass('false');
     }
