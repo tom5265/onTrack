@@ -28,7 +28,7 @@ export default class FirebaseRepository extends BaseRepository {
     
     logInUser(email:string, password: string): async.IThenable<any> {
         return this.firebaservice.logInUser(email, password).then((success) => {
-            console.log(success);
+            // console.log(success);
             this.storage.setItem('username', success.uid);
             this.userID = success.uid;
             return success;
@@ -36,13 +36,15 @@ export default class FirebaseRepository extends BaseRepository {
     }
     
     postUserTask(task:Object){
-        console.log(task);
         this.firebaservice.postUserTask(task)
     }
     
-    getUserTasks(userId:string){
-        
+    updateUserTask(updatedTask:any, postkey:any){
+        let task = updatedTask;
+        let key = postkey;
+        this.firebaservice.updateUserTask(task, key);
     }
+
     
 }
 

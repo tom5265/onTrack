@@ -4,7 +4,8 @@ import BaseService from '../base/base.svc';
 
 
 export default class FirebaseService extends BaseService {
-
+    
+    
     private UID: string;
     private myDataRef = new Firebase('https://popping-inferno-1046.firebaseIO.com');
     private myDataRefPosts: Firebase;
@@ -49,6 +50,7 @@ export default class FirebaseService extends BaseService {
 
     setSpecificRef(uid:string) {
        this.myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + uid);
+       this.UID = uid;
     }
 
     postUserTask(taskName:Object) {
@@ -56,7 +58,21 @@ export default class FirebaseService extends BaseService {
         this.myDataRefPosts.push({
             task: taskName
         })
-       
+    }
+    
+    updateUserTask(updatedTask:any, postkey:any) {
+        let key = postkey;
+        let taskData = updatedTask;
+        console.log(taskData);
+        console.log(this.UID);
+        console.log(key);
+        
+        let updatedlink = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.UID + '/' + key);
+        console.log('setting task:');
+        console.log(taskData);
+        updatedlink.set({
+            task: taskData
+        })
     }
     
     getUserTasks() {
