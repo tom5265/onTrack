@@ -5,6 +5,7 @@ import NewTaskViewControl from '../../viewcontrols/newtask/newtask.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import SpecificTaskViewControl from '../../viewcontrols/specifictask/specifictask.vc';
 import LoginViewControl from '../../viewcontrols/login/login.vc';
+import SuggestionsViewControl from '../../viewcontrols/suggestions/suggestions.vc';
 
 export default class HomeViewControl extends BaseViewControl {
 
@@ -14,6 +15,7 @@ export default class HomeViewControl extends BaseViewControl {
         allPosts: [],
         currentTasks: null,
         userSpecificId: '',
+        sug: SuggestionsViewControl
     };
 
     constructor(private firebaserepo: FirebaseRepository) {
@@ -66,6 +68,10 @@ export default class HomeViewControl extends BaseViewControl {
                 id: this.context.userSpecificId
             }
         });
+    }
+    
+    toSuggestions() {
+        this.navigator.navigate(SuggestionsViewControl);
     }
 
     logOut() {
