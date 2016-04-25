@@ -22,20 +22,30 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
-
-    navigatedTo(parameters: { key: string; }) {
+    
+    navigatedTo(parameters: { key: string, id:string}) {
+        console.log('inside navto');
+        console.log(parameters.key);
         let tempArray: any = null;
         let key = parameters.key;
         this.publickey = key;
         let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + key);
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
             let data = snapshot.val();
+            if(data.task.completionDate === ''){
+                console.log('no date set');
+                jQuery('.date-container').hide();
+            }else{
+                console.log('date set');
+                jQuery('.date-container').show();
+            }
             let task = {
                 // postkey: key,
                 taskName: data.task.taskName,
                 taskObjectives: data.task.taskObjectives,
                 completionDate: data.task.completionDate
             }
+            
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
             let numberCompleted = 0;
@@ -44,8 +54,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     numberCompleted++;
                 }
             });
-            // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
+
 
             if (numberCompleted > 0) {
                 // console.log('o');
@@ -57,15 +67,13 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
                 }
             }
-            console.log(this.context.specificTask)
-        });
-        // compare current date to completion date set
-        // let now = new Date();
-        // let setDate = new Date(this.context.specificTask.completionDate);
-        // console.log(setDate);
-        // this.compareDates(setDate, now);
-        
+                console.log(this.context.specificTask);  
+        });   
     };
+    
+    loaded(){
+        this.compareDates(this.context.specificTask.completionDate);
+    }
 
 
     deleteThisPost() {
@@ -87,8 +95,6 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         this.context.completedCheckpoints = numberOfTrues.length;
         let numberOfTasks = document.getElementsByClassName('task');
         this.context.checkpoints = numberOfTasks.length;
-        // console.log(this.context.specificTask.postkey);
-        // console.log(this.context.specificTask);
         if (numberOfTrues.length > 0) {
             if (numberOfTrues == numberOfTasks) {
                 console.log('congrats');
@@ -97,25 +103,20 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
     }
     
-    compareDates(setDate: Date, now: Date) {
+    compareDates(setDate:any) {
         console.log('comparing...');
-        let set = setDate.getTime();
-        let n = now.getTime();
-        console.log(set);
-        console.log(n);
-        if (n < set) { //if on track
-            alert('you are on track');
-            // let div = document.getElementById('completion-date');
-            // console.log(div);
-        } else { //if too late
-            alert('you are NOT track');
-            // let div = document.getElementById('completion-date');
-            // console.log(div);
+        let now = new Date();
+        let set = new Date(setDate);
+        if(this.context.specificTask.completionDate !== ''){ //if date is present
+            if (now < set) { //if on track
+                jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
+            } else { //if too late
+                jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
+            }
+        }else{
+            console.log('no date');
         }
-
     }
-    
-    
 };
 
 

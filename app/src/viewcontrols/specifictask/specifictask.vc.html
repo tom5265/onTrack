@@ -1,7 +1,9 @@
 <div class="home-main-container">
     <h1>{{specificTask.taskName}}</h1>
     <h3>{{completedCheckpoints}} of {{checkpoints}}</h3>
-
+    <div class="date-container">
+        <p id="completion-date">{{specificTask.completionDate}}</p>
+    </div>
     <div id="color-bg" class="current-task-parent-container">
         <div>
             <div class="current-task-container row">
@@ -11,21 +13,11 @@
                         <plat-toggle plat-bind="isCompleted" class="toggle-primary toggleContainer" plat-change="someFunc()"></plat-toggle>
                     </div>
                 </plat-foreach>
-                <h5>Completion Date Set</h5>
-                    <p id="completion-date">{{specificTask.completionDate}}</p>
-                <div class="deleteBtn">
-                    <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
+             
             </div>
         </div>
     </div>
-
-    <!-- ADD NEW TASK -->
-    <!--<div class="add-task-container row">
-        <div class="plus-task col-phn-2" plat-tap="addNewTask()">
-            <h6>+</h6>
-        </div>
-        <div class="add-task col-phn-10">
-            <p>Add New Task</p>
-        </div>
-    </div>-->
+    <div class="deleteBtn">
+        <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
+    </div>
 </div>

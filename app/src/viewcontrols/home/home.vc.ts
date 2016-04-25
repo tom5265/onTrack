@@ -5,6 +5,7 @@ import NewTaskViewControl from '../../viewcontrols/newtask/newtask.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import SpecificTaskViewControl from '../../viewcontrols/specifictask/specifictask.vc';
 import LoginViewControl from '../../viewcontrols/login/login.vc';
+import SuggestionsViewControl from '../../viewcontrols/suggestions/suggestions.vc';
 
 export default class HomeViewControl extends BaseViewControl {
 
@@ -14,12 +15,14 @@ export default class HomeViewControl extends BaseViewControl {
         allPosts: [],
         currentTasks: null,
         userSpecificId: '',
+        sug: SuggestionsViewControl
     };
 
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
 
+    completionDate = '';
 
     navigatedTo(parameters: { id: string; }) {
         let tempArray:any = [];
@@ -33,13 +36,15 @@ export default class HomeViewControl extends BaseViewControl {
                     taskname: data[key].task.taskName,
                     taskobjectives: data[key].task.taskObjectives,
                     taskobjectiveslength: data[key].task.taskObjectives.length,
-                    uid: this.firebaserepo.userID
+                    uid: this.firebaserepo.userID,
+                    completionDate: data[key].task.completionDate
                 }
                 // console.log(task);
             tempArray.push(task);
                 
             }
             this.context.allPosts = tempArray;
+            console.log(this.context);
         });
 
     };
@@ -47,10 +52,11 @@ export default class HomeViewControl extends BaseViewControl {
     navToSpecificPost(key:string){
         let postkey = key;
         let usersID = this.firebaserepo.userID;
+        
         this.navigator.navigate(SpecificTaskViewControl, {
             parameters: {
                 key: postkey,
-                id: usersID
+                id: this.firebaserepo.userID
             }
         })
     }
@@ -62,6 +68,10 @@ export default class HomeViewControl extends BaseViewControl {
                 id: this.context.userSpecificId
             }
         });
+    }
+    
+    toSuggestions() {
+        this.navigator.navigate(SuggestionsViewControl);
     }
 
     logOut() {
