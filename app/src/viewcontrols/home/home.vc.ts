@@ -4,6 +4,7 @@ import * as jQuery from 'jquery';
 import NewTaskViewControl from '../../viewcontrols/newtask/newtask.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import SpecificTaskViewControl from '../../viewcontrols/specifictask/specifictask.vc';
+import LoginViewControl from '../../viewcontrols/login/login.vc';
 
 export default class HomeViewControl extends BaseViewControl {
 
@@ -63,6 +64,10 @@ export default class HomeViewControl extends BaseViewControl {
         });
     }
 
+    logOut() {
+        this.context.userSpecificId = '';
+        this.navigator.navigate(LoginViewControl);
+    }
 
 
 }
