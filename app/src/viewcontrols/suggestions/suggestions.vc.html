@@ -1,15 +1,20 @@
 <div class="main">
-    <plat-link plat-options="{ view: home }"><p plat- id="back-button">&larr;</p></plat-link>
+    <plat-link plat-options="{ view: home }">
+        <p plat- id="back-button">&larr;</p>
+    </plat-link>
     <div class="container">
         <h1>DIY Project Ideas</h1>
         <h4>See what others are doing or find a new project.</h4>
         <plat-foreach class="reddit-container" plat-context="reddits">
             <div class="reddits">
-                <h3>Title: {{title}}</h3>
+                <div class="ribbon">
+                    <span>REDDIT DIY</span>
+                </div>
+                <h3>{{title}}</h3>
                 <p>Author: {{author}}</p>
-                <!--<p><{{id}}</p>-->
-                <p>{{selftext}}</p>
-                <!--<plat-button class="button-success" plat-tap="readMore(id)">Read More..</plat-button>-->
+                <img id="img" src="{{thumbnail}}">
+                <br>
+                <a class="button button-primary button-outline" href="{{url}}" target="_blank">Read More</a>
             </div>
         </plat-foreach>
     </div>

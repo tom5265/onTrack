@@ -23,18 +23,37 @@
         }
         .container {
             padding-bottom: 20px;
-            text-align: left;
+            text-align: center;
             display: block;
             position: relative;
         }
         .reddit-container {
             width: 50%;
             margin: 0 auto;
+            position: relative;
         }
         .reddits {
-            background-color: white;
             padding: 2em;
             margin: 1em;
+            background-color: #fff;
+            -webkit-box-shadow: 0 0 10px grey;
+            box-shadow: 0 0 10px grey;
+            position: relative;
+        }
+        @-webkit-keyframes hop {
+            from {
+                -webkit-transform: scale(1.0);
+            }
+            50% {
+                -webkit-transform: scale(1.05);
+            }
+            to { 
+                -webkit-transform: scale(1.0);
+            }
+            }
+        .reddits:hover {
+            animation: hop 600ms ease-in-out;
+            -webkit-animation: hop 600ms ease-in-out;
         }
         .main {
             background: #83a4d4; /* fallback for old browsers */
@@ -42,7 +61,76 @@
             background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
             height: 100%;
             width: 100%;
-            position: relative;                    
+            position: relative;
+            font-family: @Oswald, sans-serif;                   
+        }
+         .reddits #img {
+             height: 6em;
+             width: 7em;
+         }
+        .reddits img[src="self"] {
+            display: none;
+        }
+    //    .reddit-container .corner-link {
+    //        position: absolute;
+    //        background-color: black;
+    //        height: 2.5em;
+    //        width: 8em;
+    //        top: 0;
+    //        left: -3em;
+          
+    //        a {
+    //            color: red;
+    //        }
+    //    }
+    //    .box {
+    //     width: 200px; height: 300px;
+    //     position: relative;
+    //     border: 1px solid #BBB;
+    //     background: #EEE;
+    //     }
+        .ribbon {
+        position: absolute;
+        right: -5px; top: -5px;
+        z-index: 1;
+        overflow: hidden;
+        width: 75px; height: 75px;
+        text-align: right;
+        }
+        .ribbon span {
+        font-size: 10px;
+        font-weight: bold;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 20px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        width: 100px;
+        display: block;
+        background: #669FF1;
+        background: linear-gradient(#669FF1 0%, #4C76B3 100%);
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+        position: absolute;
+        top: 19px; right: -21px;
+        }
+        .ribbon span::before {
+        content: "";
+        position: absolute; left: 0px; top: 100%;
+        z-index: -1;
+        border-left: 3px solid #4C76B3;
+        border-right: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid #4C76B3;
+        }
+        .ribbon span::after {
+        content: "";
+        position: absolute; right: 0px; top: 100%;
+        z-index: -1;
+        border-left: 3px solid transparent;
+        border-right: 3px solid #4C76B3;
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid #4C76B3;
         }
     }
 }

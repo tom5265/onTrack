@@ -6,9 +6,10 @@
     [plat-control="home-vc"] {
 
     }
-}
+
 
 @PrimaryBlue: #669ff1;
+
 
 .border-radius (@radius: 5px) {
 	-webkit-border-radius: @radius;
@@ -18,75 +19,63 @@
 
 .home-main-container{
     width: 100%;
+    background: #83a4d4; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+    height: 100%;
+    padding-bottom: 5em;
+    margin: auto;
+    
+    
+    img{
+        padding-top: 2em;
+        width: 15vw;
+        height: auto;
+        margin: auto;
+        display: block;
+    }
     
     h1{
-        color: @PrimaryBlue;
+        color: white;
         text-align: center;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     
-    .current-task-parent-container{
-        background-color: @PrimaryBlue;
-        width: 60%;
+    .current-task-parent-container {
+        background-color:rgba(250,255,255,0.2);
+        border-radius: 0.5em;
+        width: 80%;
         margin: auto;
-        padding: 2% 0;
-        .border-radius;
+        box-shadow: 0 0 100px 1px #83a4d4;
+        text-align: center;
+        padding-top: 0em;
         
-    }
-    .current-task-container{
-        width: 90%;
-        background-color: white;
-        margin: 5% auto;
-        .border-radius;
-        margin-bottom: 3%;
+        .current-task {
+            padding-top: 2em;
+            padding-bottom: 2em;
+            border-bottom: 1px solid white;
+        }
         
-        .current-task{
-            text-align: center;
-            color: @PrimaryBlue;
-            height: 3em;
-            p{
-                font-size: 1.25em;
-                line-height: 2.5em;
-                padding: 0;
-            }
+        .title {
+            font-size: 3em;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat-ExtraBold';
+            color: white;
+            margin-bottom: -0.2em;
+        }
+        .sub-title {
+            font-size: 1.5em;
+            margin: 0;
+            color: #40b0b1;
+            font-family: 'Montserrat-Light';
         }
     }
     
-    .add-task-container{
-        width: 60%;
-        margin: auto;
-        margin-top: 3%;
-        border: 2px solid @PrimaryBlue;
-        .border-radius;
-        
-        
-        .plus-task{
-            background-color: @PrimaryBlue;
-            text-align: center;
-            color: white;
-            height: 3em;
-             h6{
-                 font-size: 1.75em;
-                 padding: 0;
-                 line-height: 1.65em;
-             }
-        }
-        
-        .plus-task:hover{
-            background-color: darken(@PrimaryBlue, 5%);
-        }
-        
-        .add-task{
-            text-align: center;
-            color: @PrimaryBlue;
-            height: 3em;
-            p{
-                font-size: 1.25em;
-                line-height: 2.5em;
-                padding: 0;
-            }
-          
-        }
-        
+    h6 {
+        font-size: 3em;
+        color:#40b0b1;
     }
+    
+}
 }

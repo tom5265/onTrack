@@ -15,6 +15,7 @@ export default class NewtaskViewControl extends BaseViewControl {
         checkpointInput: "",
         UID: '',
         SingleTask: {
+            // postkey: '',
             taskName: "",
             taskObjectives: []
         }

@@ -1,13 +1,13 @@
 <div class="home-main-container">
     <h1>view the task</h1>
-    <div class="current-task-parent-container">
+    <div id="color-bg" class="current-task-parent-container">
         <h3>You have completed {{completedCheckpoints}} of {{checkpoints}} Checkpoints</h3>
         <div>    
             <div class="current-task-container row">
                 <div class="current-task col-phn-12">
-                    <p>The current task is: {{specificTask.taskname}}</p>
-                    <plat-foreach plat-context="specificTask.taskobjectives">
-                        <p plat-tap="toggleComplete()" class="{{isCompleted}} task">{{objName}}</p>
+                    <p>The current task is: {{specificTask.taskName}}</p>
+                    <plat-foreach plat-context="specificTask.taskObjectives">
+                        <p plat-tap="toggleComplete()" class="{{isCompleted}} task">{{objName}}</p><plat-toggle plat-bind="isCompleted" class="toggle-primary" plat-change="someFunc()"></plat-toggle>
                     </plat-foreach>
                 </div>
             </div>
