@@ -60,11 +60,20 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             console.log(this.context.specificTask)
         });
     };
-    
-    
+
+
     deleteThisPost() {
-        this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
-        this.navigator.navigate(HomeViewControl);
+
+        if (this.context.checkpoints != this.context.completedCheckpoints) {
+            if (confirm("You haven't completed all of your checkpoints, are you sure you're ready to complete the task?") == true) {
+                this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+                this.navigator.navigate(HomeViewControl);
+            }
+        } else {
+            alert("Great job on setting a goal and reaching it. Keep up the great work!");
+            this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+            this.navigator.navigate(HomeViewControl);
+        }
     }
 
     someFunc() {
@@ -77,7 +86,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         if (numberOfTrues.length > 0) {
             if (numberOfTrues == numberOfTasks) {
                 console.log('congrats');
-            } 
+            }
         }
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
     }
