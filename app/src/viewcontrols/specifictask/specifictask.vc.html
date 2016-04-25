@@ -13,12 +13,6 @@
                 </plat-foreach>
                 <div class="deleteBtn">
                     <plat-button plat-tap="deleteThisPost" class="button-danger">Delete</plat-button>
-                <div class="current-task col-phn-12">
-                    <p>The current task is: {{specificTask.taskName}}</p>
-                    <plat-foreach plat-context="specificTask.taskObjectives">
-                        <p plat-tap="makeProgress" class="{{isCompleted}} task">{{objName}}</p><plat-toggle plat-bind="isCompleted" class="toggle-primary" plat-change="someFunc()"></plat-toggle>
-                    </plat-foreach>
-                </div>
             </div>
         </div>
     </div>
