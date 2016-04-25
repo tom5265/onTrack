@@ -60,7 +60,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             }
             console.log(this.context.specificTask)
         });
-        //compare current date to completion date set
+        // compare current date to completion date set
         let now = new Date();
         let setDate = new Date(this.context.specificTask.completionDate);
         console.log(setDate);
