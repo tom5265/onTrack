@@ -22,8 +22,10 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     constructor(private firebaserepo: FirebaseRepository) {
         super();
     }
-
+    
     navigatedTo(parameters: { key: string; }) {
+        console.log('inside navto');
+        console.log(parameters.key);
         let tempArray: any = null;
         let key = parameters.key;
         this.publickey = key;
@@ -36,6 +38,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                 taskObjectives: data.task.taskObjectives,
                 completionDate: data.task.completionDate
             }
+            
+
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
             let numberCompleted = 0;
@@ -47,6 +51,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
 
+
             if (numberCompleted > 0) {
                 // console.log('o');
                 if (task.taskObjectives.length === numberCompleted) {
@@ -57,15 +62,13 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
                 }
             }
-            console.log(this.context.specificTask)
-        });
-        // compare current date to completion date set
-        // let now = new Date();
-        // let setDate = new Date(this.context.specificTask.completionDate);
-        // console.log(setDate);
-        // this.compareDates(setDate, now);
-        
+                console.log(this.context.specificTask);  
+        });   
     };
+    
+    loaded(){
+        this.compareDates(this.context.specificTask.completionDate);
+    }
 
 
     deleteThisPost() {
@@ -97,22 +100,15 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
     }
     
-    compareDates(setDate: Date, now: Date) {
+    compareDates(setDate:any) {
         console.log('comparing...');
-        let set = setDate.getTime();
-        let n = now.getTime();
-        console.log(set);
-        console.log(n);
-        if (n < set) { //if on track
-            alert('you are on track');
-            // let div = document.getElementById('completion-date');
-            // console.log(div);
+        let now = new Date();
+        let set = new Date(this.context.specificTask.completionDate);
+        if (now < set) { //if on track
+            jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
         } else { //if too late
-            alert('you are NOT track');
-            // let div = document.getElementById('completion-date');
-            // console.log(div);
+            jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
         }
-
     }
     
     

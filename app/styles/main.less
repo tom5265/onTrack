@@ -5,6 +5,7 @@
 
 @PrimaryBlue: #669ff1;
 @PrimaryGreen: #68C3A3;
+@PrimaryRed: #ef716f;
 
 @Oswald: 'Oswald', sans-serif;
 
@@ -47,6 +48,26 @@
 }
 .too-late{
     color: darkred;
+}
+
+.on-track-bubble{
+    .border-radius(40px);
+    background-color: @PrimaryGreen;
+    color: white;
+    font-family: 'Montserrat-Light', sans-serif;
+    font-size: .80em;
+    width: 30%;
+    margin: auto;
+}
+
+.off-track-bubble{
+    .border-radius(40px);
+    background-color: @PrimaryRed;
+    color: white;
+    font-family: 'Montserrat-Light', sans-serif;
+    font-size: .80em;
+    width: 30%;
+    margin: auto;
 }
 
 @import '../src/viewcontrols/home/home.vc.less';

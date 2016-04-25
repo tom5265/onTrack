@@ -11,8 +11,10 @@
                         <plat-toggle plat-bind="isCompleted" class="toggle-primary toggleContainer" plat-change="someFunc()"></plat-toggle>
                     </div>
                 </plat-foreach>
-                <h5>Completion Date Set</h5>
+                <div class="date-container">
+                    <h5>Completion Date Set</h5>
                     <p id="completion-date">{{specificTask.completionDate}}</p>
+                </div>
                 <div class="deleteBtn">
                     <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
             </div>
