@@ -23,7 +23,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         super();
     }
     
-    navigatedTo(parameters: { key: string; }) {
+    navigatedTo(parameters: { key: string, id:string}) {
         console.log('inside navto');
         console.log(parameters.key);
         let tempArray: any = null;
@@ -32,6 +32,13 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + key);
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
             let data = snapshot.val();
+            if(data.task.completionDate === ''){
+                console.log('no date set');
+                jQuery('.date-container').hide();
+            }else{
+                console.log('date set');
+                jQuery('.date-container').show();
+            }
             let task = {
                 // postkey: key,
                 taskName: data.task.taskName,
@@ -39,7 +46,6 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                 completionDate: data.task.completionDate
             }
             
-
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
             let numberCompleted = 0;
@@ -48,7 +54,6 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     numberCompleted++;
                 }
             });
-            // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
 
 
@@ -90,8 +95,6 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         this.context.completedCheckpoints = numberOfTrues.length;
         let numberOfTasks = document.getElementsByClassName('task');
         this.context.checkpoints = numberOfTasks.length;
-        // console.log(this.context.specificTask.postkey);
-        // console.log(this.context.specificTask);
         if (numberOfTrues.length > 0) {
             if (numberOfTrues == numberOfTasks) {
                 console.log('congrats');
@@ -103,15 +106,17 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     compareDates(setDate:any) {
         console.log('comparing...');
         let now = new Date();
-        let set = new Date(this.context.specificTask.completionDate);
-        if (now < set) { //if on track
-            jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
-        } else { //if too late
-            jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
+        let set = new Date(setDate);
+        if(this.context.specificTask.completionDate !== ''){ //if date is present
+            if (now < set) { //if on track
+                jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
+            } else { //if too late
+                jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
+            }
+        }else{
+            console.log('no date');
         }
     }
-    
-    
 };
 
 

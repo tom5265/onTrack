@@ -20,6 +20,7 @@ export default class HomeViewControl extends BaseViewControl {
         super();
     }
 
+    completionDate = '';
 
     navigatedTo(parameters: { id: string; }) {
         let tempArray:any = [];
@@ -33,13 +34,15 @@ export default class HomeViewControl extends BaseViewControl {
                     taskname: data[key].task.taskName,
                     taskobjectives: data[key].task.taskObjectives,
                     taskobjectiveslength: data[key].task.taskObjectives.length,
-                    uid: this.firebaserepo.userID
+                    uid: this.firebaserepo.userID,
+                    completionDate: data[key].task.completionDate
                 }
                 // console.log(task);
             tempArray.push(task);
                 
             }
             this.context.allPosts = tempArray;
+            console.log(this.context);
         });
 
     };
@@ -47,10 +50,11 @@ export default class HomeViewControl extends BaseViewControl {
     navToSpecificPost(key:string){
         let postkey = key;
         let usersID = this.firebaserepo.userID;
+        
         this.navigator.navigate(SpecificTaskViewControl, {
             parameters: {
                 key: postkey,
-                id: usersID
+                id: this.firebaserepo.userID
             }
         })
     }

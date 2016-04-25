@@ -28,7 +28,11 @@ export default class NewtaskViewControl extends BaseViewControl {
             let enteredMonth = jQuery('#date-month').val();
             let enteredDay = jQuery('#date-day').val();
             let enteredYear = jQuery('#date-year').val();
-            let stringDate = String(enteredMonth + ' ' + enteredDay + ', ' + enteredYear);
+            if(enteredMonth === "" || enteredDay === ""){
+                var stringDate = "";
+            }else{
+                var stringDate = String(enteredMonth + ' ' + enteredDay + ', ' + enteredYear);
+            }
             this.context.SingleTask.completionDate = stringDate;
             this.firebaserepo.postUserTask(this.context.SingleTask);
             this.navigator.navigate(HomeViewControl, {
