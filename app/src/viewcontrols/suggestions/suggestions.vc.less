@@ -11,16 +11,6 @@
         h4 {
             text-align: center;
         }
-        #back-button {
-            position: absolute;
-            left: 0.5em;
-            top: -1em;
-            font-size: 3em;
-            z-index: 1000;
-            margin: 0;
-            color: black;
-            text-decoration: none;
-        }
         .container {
             padding-bottom: 20px;
             text-align: center;
@@ -71,24 +61,6 @@
         .reddits img[src="self"] {
             display: none;
         }
-    //    .reddit-container .corner-link {
-    //        position: absolute;
-    //        background-color: black;
-    //        height: 2.5em;
-    //        width: 8em;
-    //        top: 0;
-    //        left: -3em;
-          
-    //        a {
-    //            color: red;
-    //        }
-    //    }
-    //    .box {
-    //     width: 200px; height: 300px;
-    //     position: relative;
-    //     border: 1px solid #BBB;
-    //     background: #EEE;
-    //     }
         .ribbon {
         position: absolute;
         right: -5px; top: -5px;
@@ -131,6 +103,25 @@
         border-right: 3px solid #4C76B3;
         border-bottom: 3px solid transparent;
         border-top: 3px solid #4C76B3;
+        }
+        .main .back-button {
+            width: 10em;
+            height: 4em;
+            line-height: 4em;
+             #back-btn {
+                 display: inline-block;
+                 height: 2em;
+                 width: 3em;
+                 vertical-align: middle;
+             }
+             p {
+                 vertical-align: middle;
+                 margin: 0;
+                 padding: 0;
+                 display: inline-block;
+                 color: black;
+                 margin-left: -0.5em;
+             }
         }
     }
 }

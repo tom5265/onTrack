@@ -1,20 +1,22 @@
 <div class="home-main-container">
     <h1>{{specificTask.taskName}}</h1>
+    <h3>{{completedCheckpoints}} of {{checkpoints}}</h3>
+
     <div id="color-bg" class="current-task-parent-container">
-        <h3>You have completed {{completedCheckpoints}} of {{checkpoints}} Checkpoints</h3>
-        <div>    
+        <div>
             <div class="current-task-container row">
-                <div class="current-task col-phn-12">
-                    <p>The current task is: {{specificTask.taskName}}</p>
-                    <plat-foreach plat-context="specificTask.taskObjectives">
-                        <p plat-tap="makeProgress" class="{{isCompleted}} task">{{objName}}</p><plat-toggle plat-bind="isCompleted" class="toggle-primary" plat-change="someFunc()"></plat-toggle>
-                    </plat-foreach>
-                </div>
-                <plat-button plat-tap="deleteThisPost" class="button-danger">Delete</plat-button>
+                <plat-foreach plat-context="specificTask.taskObjectives">
+                    <div class="current-task col-phn-12">
+                        <p class="{{isCompleted}} task">{{objName}}</p>
+                        <plat-toggle plat-bind="isCompleted" class="toggle-primary toggleContainer" plat-change="someFunc()"></plat-toggle>
+                    </div>
+                </plat-foreach>
+                <div class="deleteBtn">
+                    <plat-button plat-tap="deleteThisPost" class="button-danger">Delete</plat-button>
             </div>
         </div>
     </div>
-    
+
     <!-- ADD NEW TASK -->
     <!--<div class="add-task-container row">
         <div class="plus-task col-phn-2" plat-tap="addNewTask()">
