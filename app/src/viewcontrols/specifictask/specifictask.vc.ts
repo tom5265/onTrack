@@ -26,7 +26,6 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     navigatedTo(parameters: { key: string; }) {
         let tempArray: any = null;
         let key = parameters.key;
-      
         this.publickey = key;
         let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + key);
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
@@ -61,17 +60,26 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             console.log(this.context.specificTask)
         });
         // compare current date to completion date set
-        let now = new Date();
-        let setDate = new Date(this.context.specificTask.completionDate);
-        console.log(setDate);
-        this.compareDates(setDate, now);
+        // let now = new Date();
+        // let setDate = new Date(this.context.specificTask.completionDate);
+        // console.log(setDate);
+        // this.compareDates(setDate, now);
         
     };
-    
-    
+
+
     deleteThisPost() {
-        this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
-        this.navigator.navigate(HomeViewControl);
+
+        if (this.context.checkpoints != this.context.completedCheckpoints) {
+            if (confirm("You haven't completed all of your checkpoints, are you sure you're ready to complete the task?") == true) {
+                this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+                this.navigator.navigate(HomeViewControl);
+            }
+        } else {
+            alert("Great job on setting a goal and reaching it. Keep up the great work!");
+            this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+            this.navigator.navigate(HomeViewControl);
+        }
     }
 
     someFunc() {
@@ -84,28 +92,30 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         if (numberOfTrues.length > 0) {
             if (numberOfTrues == numberOfTasks) {
                 console.log('congrats');
-            } 
+            }
         }
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
     }
     
-    compareDates(setDate:Date, now:Date){
+    compareDates(setDate: Date, now: Date) {
         console.log('comparing...');
-        let set= setDate.getTime();
+        let set = setDate.getTime();
         let n = now.getTime();
         console.log(set);
         console.log(n);
-        if(n < set){ //if on track
+        if (n < set) { //if on track
             alert('you are on track');
             // let div = document.getElementById('completion-date');
             // console.log(div);
-        }else{ //if too late
+        } else { //if too late
             alert('you are NOT track');
             // let div = document.getElementById('completion-date');
             // console.log(div);
         }
-        
+
     }
+    
+    
 };
 
 
