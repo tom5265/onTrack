@@ -12,20 +12,14 @@
                     </div>
                 </plat-foreach>
                 <h5>Completion Date Set</h5>
-                    <p id="completion-date">{{specificTask.completionDate}}</p>
-                <div class="deleteBtn">
-                    <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
-            </div>
-        </div>
-    </div>
+                <p id="completion-date">{{specificTask.completionDate}}</p>
 
-    <!-- ADD NEW TASK -->
-    <!--<div class="add-task-container row">
-        <div class="plus-task col-phn-2" plat-tap="addNewTask()">
-            <h6>+</h6>
+            </div>
+
         </div>
-        <div class="add-task col-phn-10">
-            <p>Add New Task</p>
-        </div>
-    </div>-->
+
+    </div>
+    <div class="deleteBtn">
+        <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
+    </div>
 </div>
