@@ -26,6 +26,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     navigatedTo(parameters: { key: string; }) {
         let tempArray: any = null;
         let key = parameters.key;
+      
         this.publickey = key;
         let myDataRefPosts = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + this.firebaserepo.userID + '/' + key);
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
@@ -59,6 +60,12 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             }
             console.log(this.context.specificTask)
         });
+        //compare current date to completion date set
+        let now = new Date();
+        let setDate = new Date(this.context.specificTask.completionDate);
+        console.log(setDate);
+        this.compareDates(setDate, now);
+        
     };
 
 
@@ -89,6 +96,24 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             }
         }
         this.firebaserepo.updateUserTask(this.context.specificTask, this.publickey);
+    }
+    
+    compareDates(setDate:Date, now:Date){
+        console.log('comparing...');
+        let set= setDate.getTime();
+        let n = now.getTime();
+        console.log(set);
+        console.log(n);
+        if(n < set){ //if on track
+            alert('you are on track');
+            // let div = document.getElementById('completion-date');
+            // console.log(div);
+        }else{ //if too late
+            alert('you are NOT track');
+            // let div = document.getElementById('completion-date');
+            // console.log(div);
+        }
+        
     }
 };
 
