@@ -7,7 +7,7 @@
                 <div class="current-task col-phn-12">
                     <p>The current task is: {{specificTask.taskname}}</p>
                     <plat-foreach plat-context="specificTask.taskobjectives">
-                        <p plat-tap="toggleComplete(e)" class="{{isCompleted}} task">{{objName}}</p>
+                        <p plat-tap="toggleComplete()" class="{{isCompleted}} task">{{objName}}</p>
                     </plat-foreach>
                 </div>
             </div>

@@ -38,7 +38,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         let taskTrue = jQuery(".task");
         console.log(this.context);
         jQuery(taskTrue).toggleClass('true');
-        jQuery(taskTrue).toggleClass('false');
+            
     }
 };
 

@@ -42,7 +42,7 @@ export default class NewtaskViewControl extends BaseViewControl {
 
     addCheckpoint() {
         let input = this.context.checkpointInput;
-        if (this.context.checkpointInput === "") {
+        if (this.context.checkpointInput === "") { //if its empty
             alert('No Checkpoint Entered!');
         } else {
             //deletes 'empty' paragraph if it's there
@@ -68,49 +68,93 @@ export default class NewtaskViewControl extends BaseViewControl {
                 ableToEdit = checkpoints[0].isContentEditable;
             }
             //appends checkpoint to DOM
-            jQuery('#created-checkpoint-container').append("<div class='created-checkpoint-cell' contenteditable='" + ableToEdit + "'><p contenteditable='inherit' class='created-checkpoint'>" + input + "</p></div>")
+            jQuery('#created-checkpoint-container').append("<div class='created-checkpoint-cell' contenteditable='" + ableToEdit + "'><p contenteditable='inherit' class='created-checkpoint'>" + input + "</p><i class='fa fa-minus-circle' aria-hidden='true'></i></div>")
             jQuery('#checkpoint-input').val("");
         }
     }
 
     editCheckpoints() {
-        //Save the edits and push them in the array
-        if (jQuery('#edit-checkpoints').text() === 'SAVE') {
-            console.log('saving!');
-            this.context.SingleTask.taskObjectives = [];
-            let editedCheckpoints = jQuery('.created-checkpoint');
-            for (let i = 0; i < editedCheckpoints.length; i++) {
-                let temp = {
-                    objName: editedCheckpoints[i].textContent,
-                    isCompleted: false
-                }
-                this.context.SingleTask.taskObjectives.push(temp);
-                console.log(this.context.SingleTask.taskObjectives);
-            }
-        }
         let elements = document.getElementsByClassName('created-checkpoint-cell');
         let checkpoints: Array<HTMLDivElement> = [];
         for (let i = 0; i < elements.length; i++) {
             checkpoints.push(<HTMLDivElement>elements[i]);
         }
-
         let editButton = document.getElementById('edit-checkpoints');
-        for (let i = 0; i < checkpoints.length; i++) {
-            if (checkpoints[i].isContentEditable) {
-                editButton.innerHTML = "EDIT";
-                checkpoints[i].contentEditable = "false";
-                jQuery(editButton).removeClass('save');
-                jQuery(checkpoints[i]).css('border', 'none')
-
-            } else {
-                console.log('now its editable');
+        let removeIcon = document.getElementsByClassName('fa');
+        
+        
+        if(jQuery('#edit-checkpoints').text() === 'EDIT'){
+            console.log('now its editable');
+            jQuery('#edit-checkpoints').text('SAVE');
+            jQuery(editButton).addClass('save');
+            for (let i = 0; i < checkpoints.length; i++) {
                 checkpoints[i].contentEditable = "true";
-                editButton.innerHTML = "SAVE";
-                jQuery(editButton).addClass('save');
                 jQuery(checkpoints[i]).css('border', '1px dashed white');
             }
+            jQuery(removeIcon).show();
+            jQuery(removeIcon).click(function(e) {
+                console.log('striking');
+                let icon = e.toElement; //gets icon element clicked
+                let objective = jQuery(icon).siblings(); //gets the specific objective
+                jQuery(objective).toggleClass('strike');
+            })
         }
+        //Save the edits and push them in the array
+        else{
+            jQuery('#edit-checkpoints').text('EDIT');
+            jQuery(removeIcon).hide();
+            jQuery(editButton).removeClass('save');
+            for (let i = 0; i < checkpoints.length; i++) {
+                checkpoints[i].contentEditable = "false";
+                jQuery(checkpoints[i]).css('border', 'none');
+            }
+            console.log('saving!');
+            this.context.SingleTask.taskObjectives = [];
+            let editedCheckpoints = jQuery('.created-checkpoint');
+            for (let i = 0; i < editedCheckpoints.length; i++) {
+                if(editedCheckpoints[i].classList.length <= 1){ //if it doesnt have strike class
+                    let temp = {
+                        objName: editedCheckpoints[i].textContent,
+                        isCompleted: false
+                    }
+                    this.context.SingleTask.taskObjectives.push(temp);
+                    console.log(this.context.SingleTask.taskObjectives);
+                }else{
+                    editedCheckpoints[i].remove();
+                }
+            }
+        }
+        // let elements = document.getElementsByClassName('created-checkpoint-cell');
+        // let checkpoints: Array<HTMLDivElement> = [];
+        // for (let i = 0; i < elements.length; i++) {
+        //     checkpoints.push(<HTMLDivElement>elements[i]);
+        // }
+        // let editButton = document.getElementById('edit-checkpoints');
+        // let removeIcon = document.getElementsByClassName('fa');
+        // for (let i = 0; i < checkpoints.length; i++) {
+        //     if (checkpoints[i].isContentEditable) {
+        //         editButton.innerHTML = "EDIT";
+        //         jQuery(removeIcon).hide();
+        //         checkpoints[i].contentEditable = "false";
+        //         jQuery(editButton).removeClass('save');
+        //         jQuery(checkpoints[i]).css('border', 'none')
+
+        //     } else {
+        //         console.log('now its editable');
+        //         checkpoints[i].contentEditable = "true";
+        //         editButton.innerHTML = "SAVE";
+        //         jQuery(removeIcon).show();
+        //         jQuery(removeIcon).click(function(e){
+        //             let icon = e.toElement; //gets icon element clicked
+        //             let objective = jQuery(icon).siblings(); //gets the specific objective
+        //             jQuery(objective).toggleClass('strike');
+        //         })
+        //         jQuery(editButton).addClass('save');
+        //         jQuery(checkpoints[i]).css('border', '1px dashed white');
+        //     }
+        // }
     }
+
 }
 
 register.viewControl('newtask-vc', NewtaskViewControl, [FirebaseRepository]);
