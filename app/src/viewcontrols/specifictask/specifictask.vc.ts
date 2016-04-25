@@ -33,7 +33,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             let task = {
                 // postkey: key,
                 taskName: data.task.taskName,
-                taskObjectives: data.task.taskObjectives
+                taskObjectives: data.task.taskObjectives,
+                completionDate: data.task.completionDate
             }
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
@@ -56,6 +57,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
                 }
             }
+            console.log(this.context.specificTask)
         });
     };
     
