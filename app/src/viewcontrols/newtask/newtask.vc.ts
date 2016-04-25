@@ -17,6 +17,7 @@ export default class NewtaskViewControl extends BaseViewControl {
         SingleTask: {
             // postkey: '',
             taskName: "",
+            completionDate: "",
             taskObjectives: []
         }
     };
@@ -48,7 +49,7 @@ export default class NewtaskViewControl extends BaseViewControl {
         } else {
             //deletes 'empty' paragraph if it's there
             if (jQuery('#empty-paragraph').length !== 0) {
-                jQuery('#empty-paragraph').remove();
+                jQuery('#empty-paragraph').hide();
                 jQuery('#edit-checkpoints').show();
             }
             let temp = {
@@ -93,12 +94,14 @@ export default class NewtaskViewControl extends BaseViewControl {
                 jQuery(checkpoints[i]).css('border', '1px dashed white');
             }
             jQuery(removeIcon).show();
-            jQuery(removeIcon).click(function(e) {
-                console.log('striking');
-                let icon = e.toElement; //gets icon element clicked
+            
+            jQuery(removeIcon).on("click", function(e) {
+                let icon = e.target; //gets icon element clicked
                 let objective = jQuery(icon).siblings(); //gets the specific objective
+                console.log('Im happening!');
                 jQuery(objective).toggleClass('strike');
             })
+            
         }
         //Save the edits and push them in the array
         else{
@@ -119,41 +122,16 @@ export default class NewtaskViewControl extends BaseViewControl {
                         isCompleted: false
                     }
                     this.context.SingleTask.taskObjectives.push(temp);
-                    console.log(this.context.SingleTask.taskObjectives);
                 }else{
-                    editedCheckpoints[i].remove();
+                    let entireCheckpoint = jQuery(editedCheckpoints[i]).parent();
+                    entireCheckpoint.remove();
                 }
             }
+            if(this.context.SingleTask.taskObjectives.length === 0){ //adds back empty p 
+                jQuery('#empty-paragraph').show();
+                jQuery('#edit-checkpoints').hide();
+            }
         }
-        // let elements = document.getElementsByClassName('created-checkpoint-cell');
-        // let checkpoints: Array<HTMLDivElement> = [];
-        // for (let i = 0; i < elements.length; i++) {
-        //     checkpoints.push(<HTMLDivElement>elements[i]);
-        // }
-        // let editButton = document.getElementById('edit-checkpoints');
-        // let removeIcon = document.getElementsByClassName('fa');
-        // for (let i = 0; i < checkpoints.length; i++) {
-        //     if (checkpoints[i].isContentEditable) {
-        //         editButton.innerHTML = "EDIT";
-        //         jQuery(removeIcon).hide();
-        //         checkpoints[i].contentEditable = "false";
-        //         jQuery(editButton).removeClass('save');
-        //         jQuery(checkpoints[i]).css('border', 'none')
-
-        //     } else {
-        //         console.log('now its editable');
-        //         checkpoints[i].contentEditable = "true";
-        //         editButton.innerHTML = "SAVE";
-        //         jQuery(removeIcon).show();
-        //         jQuery(removeIcon).click(function(e){
-        //             let icon = e.toElement; //gets icon element clicked
-        //             let objective = jQuery(icon).siblings(); //gets the specific objective
-        //             jQuery(objective).toggleClass('strike');
-        //         })
-        //         jQuery(editButton).addClass('save');
-        //         jQuery(checkpoints[i]).css('border', '1px dashed white');
-        //     }
-        // }
     }
 
 }
