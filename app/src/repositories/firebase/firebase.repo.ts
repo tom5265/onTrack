@@ -35,6 +35,10 @@ export default class FirebaseRepository extends BaseRepository {
         });
     }
     
+    deleteThisPost(key:any, id:any) {
+        this.firebaservice.deleteThisPost(key, id);
+    }
+    
     postUserTask(task:Object){
         this.firebaservice.postUserTask(task)
     }

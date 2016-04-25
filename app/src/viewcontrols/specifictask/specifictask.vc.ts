@@ -2,6 +2,7 @@ import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import * as jQuery from 'jquery';
+import HomeViewControl from '../../viewcontrols/home/home.vc';
 
 
 
@@ -57,6 +58,12 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             }
         });
     };
+    
+    
+    deleteThisPost() {
+        this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+        this.navigator.navigate(HomeViewControl);
+    }
 
     someFunc() {
         let numberOfTrues = document.getElementsByClassName('true');
