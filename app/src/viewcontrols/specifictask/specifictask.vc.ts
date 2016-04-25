@@ -2,6 +2,7 @@ import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import FirebaseRepository from '../../repositories/firebase/firebase.repo';
 import * as jQuery from 'jquery';
+import HomeViewControl from '../../viewcontrols/home/home.vc';
 
 
 
@@ -32,7 +33,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
             let task = {
                 // postkey: key,
                 taskName: data.task.taskName,
-                taskObjectives: data.task.taskObjectives
+                taskObjectives: data.task.taskObjectives,
+                completionDate: data.task.completionDate
             }
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
@@ -55,8 +57,15 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
                 }
             }
+            console.log(this.context.specificTask)
         });
     };
+    
+    
+    deleteThisPost() {
+        this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+        this.navigator.navigate(HomeViewControl);
+    }
 
     someFunc() {
         let numberOfTrues = document.getElementsByClassName('true');

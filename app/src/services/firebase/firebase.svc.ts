@@ -78,6 +78,12 @@ export default class FirebaseService extends BaseService {
     getUserTasks() {
         // console.log('getting tasks');
     }
+    
+    
+    deleteThisPost(key:any, id:any) {
+        let updatedlink = new Firebase('https://popping-inferno-1046.firebaseIO.com/users/' + id + '/' + key);
+        updatedlink.set({});
+    }
 
 }
 
