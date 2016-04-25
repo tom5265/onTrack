@@ -24,8 +24,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     }
     
     navigatedTo(parameters: { key: string; }) {
-        console.log('inside navto');
-        console.log(parameters.key);
+        // console.log('inside navto');
+        // console.log(parameters.key);
         let tempArray: any = null;
         let key = parameters.key;
         this.publickey = key;
@@ -33,13 +33,10 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         myDataRefPosts.on("value", (snapshot: any, prevChildKey: any) => {
             let data = snapshot.val();
             let task = {
-                // postkey: key,
                 taskName: data.task.taskName,
                 taskObjectives: data.task.taskObjectives,
                 completionDate: data.task.completionDate
             }
-            
-
             this.context.specificTask = task;
             this.context.checkpoints = task.taskObjectives.length;
             let numberCompleted = 0;
@@ -48,10 +45,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     numberCompleted++;
                 }
             });
-            // console.log(numberCompleted);
             this.context.completedCheckpoints = numberCompleted;
-
-
             if (numberCompleted > 0) {
                 // console.log('o');
                 if (task.taskObjectives.length === numberCompleted) {
