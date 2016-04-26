@@ -100,7 +100,7 @@ export default class NewtaskViewControl extends BaseViewControl {
             jQuery(editButton).addClass('save');
             for (let i = 0; i < checkpoints.length; i++) {
                 checkpoints[i].contentEditable = "true";
-                jQuery(checkpoints[i]).css('border', '1px dashed white');
+                jQuery(checkpoints[i]).css('border', '1px dashed black');
             }
             jQuery(removeIcon).show();
             
