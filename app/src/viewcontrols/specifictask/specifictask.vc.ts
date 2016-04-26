@@ -14,7 +14,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         specificTask: null,
         post: [],
         checkpoints: 0,
-        completedCheckpoints: 0
+        completedCheckpoints: 0,
+        home: HomeViewControl
     };
 
     publickey = '';
