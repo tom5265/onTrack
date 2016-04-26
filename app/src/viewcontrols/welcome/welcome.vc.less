@@ -72,7 +72,7 @@
 
         .tri-info {
             text-align: center;
-            background-color: #fff;
+            background-color: #f2f2f2;
             padding: 3em 0;
             p {
                 font-size: 1em;
@@ -97,8 +97,55 @@
             width: 6em;
         }
         .screenshots {
-            background-color: #d3d3d3;
+            background-color: #fff;
+            padding: 2em 0;
+            .flex {
+                display: flex;
+                display: -webkit-flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            h3 {
+                color: black;
+                font-family: Montserrat-Bold, sans-serif;
+                width: 85%;
+            }
+            .texter {
+                text-align: left;
+            }
         }
-
+        #screen {
+            display: block;
+            margin: 0 auto;
+            height: 28em;
+            width: 37em;
+            max-width: 90%;
+        }
+        #iphone {
+            display: none;
+            height: 19em;
+            width: 10em;
+            margin: 0 auto;
+        }
+        @media only screen and (max-width: 700px) {
+            .tri-img {
+                margin-top: 1em;
+            }
+            #screen {
+                display: none;
+            }
+            #iphone {
+                display: block;
+            }
+           .screenshots .texter {
+                text-align: center;
+                h3 {
+                    padding-top: 0.75em;
+                    margin: 0;
+                    width: 75%;
+                    margin: 0 auto;
+                }
+            }
+        }
     }
 }
