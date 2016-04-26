@@ -27,6 +27,7 @@
         "app/src/services/base/base.svc.ts",
         "app/src/services/firebase/firebase.svc.ts",
         "app/src/services/reddit/reddit.svc.ts",
+        "app/src/templatecontrols/footer/footer.tc.ts",
         "app/src/viewcontrols/base/base.vc.ts",
         "app/src/viewcontrols/home/home.vc.ts",
         "app/src/viewcontrols/landingpage/landingpage.vc.ts",

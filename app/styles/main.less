@@ -2,7 +2,6 @@
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700,300|Josefin+Sans:400,600);
 
-
 @PrimaryBlue: #669ff1;
 @PrimaryGreen: #68C3A3;
 @PrimaryRed: #ef716f;
@@ -27,7 +26,6 @@
     font-family: "Montserrat-Light";
     src: url("../fonts/Montserrat-Light.otf")
 }
-
 
 .border-radius (@radius: 5px) {
 	-webkit-border-radius: @radius;
@@ -96,8 +94,10 @@
     }
 }
 
-
 @import 'animate.less';
+
+@import '../src/templatecontrols/footer/footer.tc.less';
+
 @import '../src/viewcontrols/home/home.vc.less';
 @import '../src/viewcontrols/landingpage/landingpage.vc.less';
 @import '../src/viewcontrols/login/login.vc.less';

@@ -1,0 +1,88 @@
+& {
+    #platui > #media;
+    #platui > #mixins;
+    #platui > #variables;
+
+    [plat-control="footer"] {
+        
+        .footer-container{
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            height: 150px;
+            
+            .footer-content-container{
+                background-color: darken(#40b0b1, 10%);
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                .logout-row{
+                    text-align: center;
+                    margin-top: 3%;
+                    
+                    #logout-button{
+                        color: lighten(#40b0b1, 10%);
+                        border: 2px solid lighten(#40b0b1, 10%);
+                        font-family: 'Montserrat-Bold';
+                        
+                    }
+                }
+                
+                .logo-row{
+                    .footer-logo{
+                        img{
+                            margin-left: 5%;
+                            width: 200px;
+                            height: auto;
+                        }
+                    }
+                    .footer-by{
+                        h4{
+                            font-family: 'Montserrat-Light';
+                            font-size: 1em;
+                            text-align: right;
+                            padding-right: 5%;
+                            color: white;
+                            padding-top: 2em;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        @mobile:  ~"only screen and (max-width: 700px)";
+        @media @mobile{
+            .footer-container{
+                height: 200px;
+                
+                .footer-content-container{
+                    
+                    .logout-row{
+                        margin-top: 5%;
+                    }
+                    
+                    .logo-row{
+                        text-align: center;
+                        .footer-logo{
+                            img{
+                                padding-right: 5%;
+                                padding-top: 3%;
+                            }
+                        }
+                        
+                        .footer-by{
+                            h4{
+                                text-align: center;
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
