@@ -26,4 +26,45 @@
     <div class="deleteBtn">
         <plat-button plat-tap="deleteThisPost" id="deleteButton"class="button-danger">Delete This Task</plat-button>
     </div>
+    <!--Completion On Track Modal -->
+    <plat-modal plat-options="{ transition: 'fade' }" plat-bind="modal" class="modal-prompt">
+        <div class="prompt-title">CONGRATULATIONS</div>
+        <div class="prompt-body">
+            <div class="row party-emojis">
+                <img src="../../images/party_emoji.png" class="col-phn-4">
+                <img src="../../images/party_emoji.png" class="col-phn-4">
+                <img src="../../images/party_emoji.png" class="col-phn-4">
+            </div>
+            <p>You successfully completed your task! If you aren't already feeling good about yourself, you should be now. Congrats on staying <u>on track!</u></p>
+        </div>
+        <div class="prompt-action button-group">
+            <plat-button plat-tap="hideModal(1)">Cancel</plat-button>
+            <plat-button class="button-suggested" plat-tap="continueModal(1)">Continue</plat-button>
+        </div>
+    </plat-modal>
+    <!--Completion Off Track Modal -->
+    <plat-modal plat-options="{ transition: 'fade' }" plat-bind="modal3" class="modal-prompt">
+        <div class="prompt-title">CONGRATULATIONS</div>
+        <div class="prompt-body">
+            <div class="row party-emojis" id="off-track-emoji-row">
+                <img src="../../images/party_emoji.png" class="col-phn-12">
+            </div>
+            <p>You completed the task! Even though you weren't <u>on track</u>, you still finished the  task. Kudos for that!</p>
+        </div>
+        <div class="prompt-action button-group">
+            <plat-button plat-tap="hideModal(3)">Cancel</plat-button>
+            <plat-button class="button-suggested" plat-tap="continueModal(3)">Continue</plat-button>
+        </div>
+    </plat-modal>
+    <!-- Delete Modal -->
+    <plat-modal plat-options="{ transition: 'fade' }" plat-bind="modal2" class="modal-prompt">
+        <div class="prompt-title" id="delete-modal-title">Delete Task</div>
+        <div class="prompt-body">
+            <p id="delete-modal-delete-p">Are you sure you want to delete this task?</p>
+        </div>
+        <div class="prompt-action button-group">
+            <plat-button plat-tap="hideModal(2)">Cancel</plat-button>
+            <plat-button class="button-suggested" id="delete-modal-delete-button" plat-tap="continueModal(2)">Delete</plat-button>
+        </div>
+    </plat-modal>
 </div>

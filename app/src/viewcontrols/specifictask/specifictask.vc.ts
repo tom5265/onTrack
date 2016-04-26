@@ -15,7 +15,10 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         post: [],
         checkpoints: 0,
         completedCheckpoints: 0,
-        home: HomeViewControl
+        home: HomeViewControl,
+        modal: false,
+        modal2: false,
+        modal3: false
     };
 
     publickey = '';
@@ -88,15 +91,33 @@ export default class SpecifictaskViewControl extends BaseViewControl {
     deleteThisPost() {
 
         if (this.context.checkpoints != this.context.completedCheckpoints) {
-            if (confirm("You haven't completed all of your checkpoints, are you sure you're ready to complete the task?") == true) {
-                this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
-                this.navigator.navigate(HomeViewControl);
-            }
+            this.context.modal2 = true;
         } else {
-            alert("Great job on setting a goal and reaching it. Keep up the great work!");
-            this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
-            this.navigator.navigate(HomeViewControl);
+            if(jQuery(".off-track-bubble").css('display') === 'block'){
+                this.context.modal3 = true;
+            }
+            if(jQuery(".on-track-bubble").css('display') === 'block'){
+                this.context.modal = true;
+            }
         }
+    }
+    
+    hideModal(num:number){
+        if(num === 1){
+            this.context.modal = false;
+        }
+        if(num === 2){
+            this.context.modal2 = false;
+        }
+        
+        if(num === 3){
+            this.context.modal3 = false;
+        }
+    }
+    
+    continueModal(){
+        this.firebaserepo.deleteThisPost(this.publickey, this.firebaserepo.userID);
+        this.navigator.navigate(HomeViewControl);
     }
 
     someFunc() {
