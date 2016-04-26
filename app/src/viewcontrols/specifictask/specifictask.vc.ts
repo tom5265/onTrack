@@ -67,14 +67,14 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                 }
             }
                 console.log(this.context.specificTask);  
+                this.compareDates(this.context.specificTask.completionDate);
         });   
     };
     
     loaded(){
         this.compareDates(this.context.specificTask.completionDate);
     }
-
-
+    
     deleteThisPost() {
 
         if (this.context.checkpoints != this.context.completedCheckpoints) {
@@ -108,9 +108,9 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         let set = new Date(setDate);
         if(this.context.specificTask.completionDate !== ''){ //if date is present
             if (now < set) { //if on track
-                jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
+                jQuery('#on-track').show()
             } else { //if too late
-                jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
+                jQuery('#off-track').show()
             }
         }else{
             console.log('no date');
