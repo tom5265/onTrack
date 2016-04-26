@@ -62,9 +62,18 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                 if (task.taskObjectives.length === numberCompleted) {
                     let bg = document.getElementById('color-bg');
                     bg.style.backgroundColor = "rgba(201,278,114,0.1)";
+                    let button = jQuery('#deleteButton');
+                    button.text('Complete Task');
+                    button.addClass('animated');
+                    button.addClass('tada');
+                    button.css({'backgroundColor' : '#68c2a4','borderColor' : '#68c2a4'})
                 } else {
                     let bg = document.getElementById('color-bg')
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
+                    let button = jQuery('#deleteButton');
+                    button.removeClass('animated tada')
+                    button.text('Delete Task');
+                    button.css({'backgroundColor' : '#ef716f','borderColor' : '#ef716f'})
                 }
             }
                 console.log(this.context.specificTask);  
