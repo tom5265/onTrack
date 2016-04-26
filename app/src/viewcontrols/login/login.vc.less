@@ -4,12 +4,15 @@
     #platui > #variables;
 
     [plat-control="login-vc"] {
+        
+        
         .main {
             background: #83a4d4; /* fallback for old browsers */
             background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
             height: 100vh;
-            width: 100%;                          
+            width: 100%;
+            font-family: 'Montserrat-Light';                   
         }
         .form-container {
             position: relative;
@@ -17,22 +20,36 @@
             top: 15%;
             width: 20em;
             max-width: 80%;
-            background-color: #fff;
             margin: 0 auto;
-            border-radius: 3%;
-            box-shadow: 0 0 12px #888888;
-            input {
-                width: 65%;
-                .border-radius(0);
+            background-color:rgba(250,255,255,0.2);
+            border-radius: 0.5em;
+            box-shadow: 0 0 100px 1px #83a4d4;            input {
+            width: 65%;
+            .border-radius(0);
+            }
+            
+            h4 {
+                font-family: 'Montserrat-Bold';
             }
             #passwordInput {
                 margin: 1em 0;
             }
+            
+            ::-webkit-input-placeholder{
+                color: white;
+                text-align: center;
+            }
            input:focus {
                 outline: none;
-                border-color: #9ecaed;
+                border-color: white;
+                color: black;
             }
-           
+           input {
+                outline: none;
+                border-color: white;
+                color: black;
+                text-align: center;
+            }
             img {
                 margin-top: 1.25em;
                 height: 4em;
