@@ -4,12 +4,35 @@
     #platui > #variables;
 
     [plat-control="suggestions-vc"] {
+        
+        
+        #back-icon {
+            clear: both;
+            position: absolute;
+            left: 0.5em;
+            top: 0.5em;
+            text-decoration: none;
+            color: white;
+        }
         h1 {
             color: white;
             text-align: center;
+            font-family: 'Montserrat-Bold';
+            margin-bottom: 0;
+
         }
         h4 {
             text-align: center;
+            font-family: 'Montserrat-Light';
+            margin-top: 0;
+            padding-bottom: 3em;
+        }
+        
+        h3 {
+            font-family: 'Montserrat-Bold';
+        }
+        p {
+            font-family: 'Montserrat-Light';
         }
         .container {
             padding-bottom: 20px;
@@ -55,8 +78,8 @@
             font-family: @Oswald, sans-serif;                   
         }
          .reddits #img {
-             height: 6em;
-             width: 7em;
+             height: auto;
+             width: 50%;
          }
         .reddits img[src="self"] {
             display: none;

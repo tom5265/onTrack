@@ -5,10 +5,7 @@
 
     [plat-control="welcome-vc"] {
         
-        @font-face {
-            font-family: "WorkSansExtraLight";
-            src: url("../fonts/WorkSans-ExtraLight.otf")
-        }
+
 
         .main {
             background: #83a4d4; /* fallback for old browsers */
@@ -16,7 +13,7 @@
             background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
             height: 100%;
             width: 100%;   
-            font-family: "WorkSansExtraLight";                       
+            font-family: "WorkSans-ExtraLight";                       
         }
         
         .main-head {
@@ -48,26 +45,33 @@
         }
         
         .main-info {
-            height: auto;
-            padding-top: 4em;
-            padding-bottom: 4em;
-            text-align: center;
-            padding-right: 2vw;
-            padding-left: 2vw;
-        }
-        
-        
-        h4 {
-            margin: 0;
-            font-size: 2em;
-            padding: 0;
-            color: white;
-        }
-        
-        h3 {
-            padding: 0;
-            margin: 0;
-            font-size: 2.5em;
+            text-align: left;
+            padding-top: 6em;
+            padding-right: 2em;
+            
+            #imac {
+                width: 30em;
+                height: auto;
+                float: right;
+                padding-top: 1em;
+                padding-right: 2em;
+                padding-bottom: 8em;
+            }
+            h4 {
+                margin-top: 1.8em !important;
+                margin: 0;
+                font-size: 1.5em;
+                padding: 0;
+                color: #2c96d1;
+                font-family: "Montserrat-Light";
+            }
+            h3 {
+                padding: 0;
+                margin: 0;
+                font-size: 2.5em;
+                font-family: "Montserrat-Bold";
+                color: white;
+            }
         }
 
         .tri-info {
@@ -96,9 +100,95 @@
             height: 6em;
             width: 6em;
         }
-        .screenshots {
-            background-color: #d3d3d3;
+        
+        .hr {
+            width: 70%;
+            border-color: #699df8;
+            margin-top: -2em;
         }
+        
+        .flex {
+            text-align: right;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+            padding-top: 5em;
+            padding-bottom: 2em;
+        }
+        .flex-text {
+            text-align: left;
+            padding-top: 3em;
+            h3 {
+                color: #2c96d1;
+                font-size: 2.5em;
+                font-family: "Montserrat-Bold";
+                margin: 0;
+            }
+            h4{
+                font-size: 1.5em;
+                color: #69bfa5;
+                font-family: "Montserrat-Light";
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .screenshots {
+            background-color: #fff;
+            padding: 2em 0;
+            
+            #screen {
+                display: inline-block;
+                width: 28em;
+                height: auto;
+            }
 
+            #ipad {
+                display: inline-block;
+                width: 25em;
+                height: auto;
+                padding-bottom: 4.5em;
+                padding-right: 1em;
+            }
+            #iphone {
+                display: inline-block;
+                width: 8em;
+                height: auto;
+                padding-bottom: 4.5em;
+                padding-right: 1em;
+
+            }
+        }
+        #screen {
+            display: block;
+            margin: 0 auto;
+            height: 28em;
+            width: 37em;
+            max-width: 90%;
+        }
+        #iphone {
+            display: none;
+            height: 19em;
+            width: 10em;
+            margin: 0 auto;
+        }
+        @media only screen and (max-width: 700px) {
+            .tri-img {
+                margin-top: 1em;
+            }
+            #screen {
+                display: none;
+            }
+            #iphone {
+                display: block;
+            }
+           .screenshots .texter {
+                text-align: center;
+                h3 {
+                    padding-top: 0.75em;
+                    margin: 0;
+                    width: 75%;
+                    margin: 0 auto;
+                }
+            }
+        }
     }
 }
