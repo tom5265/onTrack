@@ -79,7 +79,7 @@ export default class NewtaskViewControl extends BaseViewControl {
                 ableToEdit = checkpoints[0].isContentEditable;
             }
             //appends checkpoint to DOM
-            jQuery('#created-checkpoint-container').append("<div class='created-checkpoint-cell' contenteditable='" + ableToEdit + "'><p contenteditable='inherit' class='created-checkpoint'>" + input + "</p><i class='fa fa-minus-circle' aria-hidden='true'></i></div>")
+            jQuery('#created-checkpoint-container').append("<div class='created-checkpoint-cell' contenteditable='" + ableToEdit + "'><p contenteditable='inherit' class='created-checkpoint'>" + input + "</p><i class='fa fa-minus-circle fa-2x' aria-hidden='true'></i></div>")
             jQuery('#checkpoint-input').val("");
         }
     }
@@ -91,7 +91,7 @@ export default class NewtaskViewControl extends BaseViewControl {
             checkpoints.push(<HTMLDivElement>elements[i]);
         }
         let editButton = document.getElementById('edit-checkpoints');
-        let removeIcon = document.getElementsByClassName('fa');
+        let removeIcon = document.getElementsByClassName('fa-minus-circle');
         
         
         if(jQuery('#edit-checkpoints').text() === 'EDIT'){
@@ -102,14 +102,7 @@ export default class NewtaskViewControl extends BaseViewControl {
                 checkpoints[i].contentEditable = "true";
                 jQuery(checkpoints[i]).css('border', '1px dashed black');
             }
-            jQuery(removeIcon).show();
-            
-            jQuery(removeIcon).on("click", function(e) {
-                let icon = e.target; //gets icon element clicked
-                let objective = jQuery(icon).siblings(); //gets the specific objective
-                console.log('Im happening!');
-                jQuery(objective).toggleClass('strike');
-            })
+            jQuery(removeIcon).show(); //show remove icon
             
         }
         //Save the edits and push them in the array
@@ -141,6 +134,17 @@ export default class NewtaskViewControl extends BaseViewControl {
                 jQuery('#edit-checkpoints').hide();
             }
         }
+        //click handler for remove icon
+        jQuery(removeIcon).on("click", function(e) {
+                console.log(removeIcon);
+                let icon = e.target; //gets icon element clicked
+                let objective = jQuery(icon).siblings(); //gets the specific objective
+                console.log('Im happening!');
+                jQuery(objective).toggleClass('strike');
+                jQuery(icon).toggleClass('darker-red');
+            })
+        
+        
     }
 
 }
