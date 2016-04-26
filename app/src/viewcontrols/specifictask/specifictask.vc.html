@@ -1,9 +1,15 @@
 <div class="home-main-container">
+    <plat-link plat-options=" { view: home } ">
+        <i id="back-icon" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+    </plat-link>
+
     <h1>{{specificTask.taskName}}</h1>
     <h3>{{completedCheckpoints}} of {{checkpoints}}</h3>
 
     <div class="date-container">
         <p id="completion-date">{{specificTask.completionDate}}</p>
+        <div class='on-track-bubble' id="on-track">on track<i class="fa fa-check" aria-hidden="true"></i></div>
+        <div class='off-track-bubble' id="off-track">off track</div>
     </div>
     <div id="color-bg" class="current-task-parent-container">
         <div>
@@ -18,6 +24,6 @@
         </div>
     </div>
     <div class="deleteBtn">
-        <plat-button plat-tap="deleteThisPost" class="button-danger">Delete This Task</plat-button>
+        <plat-button plat-tap="deleteThisPost" id="deleteButton"class="button-danger">Delete This Task</plat-button>
     </div>
 </div>

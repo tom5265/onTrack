@@ -14,7 +14,8 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         specificTask: null,
         post: [],
         checkpoints: 0,
-        completedCheckpoints: 0
+        completedCheckpoints: 0,
+        home: HomeViewControl
     };
 
     publickey = '';
@@ -61,20 +62,29 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                 if (task.taskObjectives.length === numberCompleted) {
                     let bg = document.getElementById('color-bg');
                     bg.style.backgroundColor = "rgba(201,278,114,0.1)";
+                    let button = jQuery('#deleteButton');
+                    button.text('Complete Task');
+                    button.addClass('animated');
+                    button.addClass('tada');
+                    button.css({'backgroundColor' : '#68c2a4','borderColor' : '#68c2a4'})
                 } else {
                     let bg = document.getElementById('color-bg')
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
+                    let button = jQuery('#deleteButton');
+                    button.removeClass('animated tada')
+                    button.text('Delete Task');
+                    button.css({'backgroundColor' : '#ef716f','borderColor' : '#ef716f'})
                 }
             }
                 console.log(this.context.specificTask);  
+                this.compareDates(this.context.specificTask.completionDate);
         });   
     };
     
     loaded(){
         this.compareDates(this.context.specificTask.completionDate);
     }
-
-
+    
     deleteThisPost() {
 
         if (this.context.checkpoints != this.context.completedCheckpoints) {
@@ -108,9 +118,9 @@ export default class SpecifictaskViewControl extends BaseViewControl {
         let set = new Date(setDate);
         if(this.context.specificTask.completionDate !== ''){ //if date is present
             if (now < set) { //if on track
-                jQuery('#completion-date').append("<div class='on-track-bubble'>on track</div>")
+                jQuery('#on-track').show()
             } else { //if too late
-                jQuery('#completion-date').append("<div class='off-track-bubble'>off track</div>")
+                jQuery('#off-track').show()
             }
         }else{
             console.log('no date');
