@@ -47,13 +47,57 @@
 .on-schedule{
     color: @PrimaryGreen;
 }
-.too-late{
-    color: darkred;
+
+.modal-prompt{
+    .plat-modal-container{
+        .prompt-title{
+            background: #83a4d4; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+            font-family: 'Montserrat-Bold', sans-serif;
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        #delete-modal-title{
+            background-color: @PrimaryRed;
+            background: @PrimaryRed;
+        }
+        
+        .prompt-body{
+            font-family: 'Montserrat-Bold', sans-serif;
+            color: @PrimaryGreen;
+            font-size: 1.1em;
+            
+            .party-emojis{
+                width: 45%;
+                margin: auto;
+                text-align: center;
+                img{
+                    padding: 0 5%;
+                }
+            }
+            
+            #delete-modal-delete-p{
+                color: gray;
+                font-size: 1.5em;
+            }
+            
+            #off-track-emoji-row{
+                width: 20%;
+            }
+        }
+        
+        .prompt-action.button-group{
+            #delete-modal-delete-button{
+                color: @PrimaryRed;
+            }
+        }
+    }
 }
 
 
 @import 'animate.less';
-
 @import '../src/viewcontrols/home/home.vc.less';
 @import '../src/viewcontrols/landingpage/landingpage.vc.less';
 @import '../src/viewcontrols/login/login.vc.less';
