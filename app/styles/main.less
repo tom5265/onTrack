@@ -107,6 +107,26 @@
     }
 }
 
+@mobile:  ~"only screen and (max-width: 500px)";
+@media @mobile{
+    .modal-prompt{
+        .plat-modal{
+            min-width: 100vh;
+        }
+        .plat-modal-container{
+            .prompt-title{
+               font-size: 1em; 
+            }
+        }
+    }     
+    .date-container{
+        #on-track{
+            width: 50%;
+        } 
+    }        
+            
+}
+
 @import 'animate.less';
 
 @import '../src/templatecontrols/footer/footer.tc.less';
