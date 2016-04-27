@@ -142,9 +142,24 @@ export default class NewtaskViewControl extends BaseViewControl {
                 console.log('Im happening!');
                 jQuery(objective).toggleClass('strike');
                 jQuery(icon).toggleClass('darker-red');
-            })
-        
-        
+            }) 
+    }
+      
+    loaded(){
+        //hover affect for save button
+        jQuery('.save-task-button').mouseenter(function(){
+            jQuery(this).attr('id', 'darker-save-button');
+        });
+        jQuery('.save-task-button').mouseleave(function(){
+            jQuery(this).removeAttr('id');
+        });
+        //hover affect for add checkpoint button
+        jQuery('.add-checkpoint-button').mouseenter(function(){
+            jQuery(this).attr('id', 'hover-add-checkpoint');
+        });
+        jQuery('.add-checkpoint-button').mouseleave(function(){
+            jQuery(this).removeAttr('id');
+        });
     }
 
 }
