@@ -7,15 +7,27 @@
         
 
 
-        .main {
+        // .main {
+        //     // background: #83a4d4; /* fallback for old browsers */
+        //     // background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+        //     // background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+        //     height: 100%;
+        //     width: 100%;   
+        //     max-width: 1000px;
+        //     font-family: "WorkSans-ExtraLight";                       
+        // }
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            font-family: "WorkSans-ExtraLight";    
+        }
+        .blue-wrapper {
             background: #83a4d4; /* fallback for old browsers */
             background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
-            height: 100%;
-            width: 100%;   
-            font-family: "WorkSans-ExtraLight";                       
+            font-family: "WorkSans-ExtraLight";    
         }
-        
         .main-head {
             color:#699df8;
             font-size: 3vw;
@@ -23,6 +35,7 @@
             background-image: url(../images/bg.jpeg);
             background-size: cover;
             height: 20em;
+            font-family: "WorkSans-ExtraLight";    
             
             p {
                 margin: 0;
@@ -46,19 +59,21 @@
         
         .main-info {
             text-align: left;
-            padding-top: 6em;
-            padding-right: 2em;
-            
+            padding: 5em 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-family: "WorkSans-ExtraLight";    
             #imac {
-                width: 30em;
+                width: 28em;
                 height: auto;
                 float: right;
-                padding-top: 1em;
-                padding-right: 2em;
-                padding-bottom: 8em;
+                max-width: 100%;
+            }
+            .flexer-texter {
+                width: 80%;
+                margin: -4em auto 0 auto;
             }
             h4 {
-                margin-top: 1.8em !important;
                 margin: 0;
                 font-size: 1.5em;
                 padding: 0;
@@ -68,10 +83,29 @@
             h3 {
                 padding: 0;
                 margin: 0;
-                font-size: 2.5em;
+                font-size: 2em;
                 font-family: "Montserrat-Bold";
                 color: white;
             }
+            @media only screen and (max-width: 900px) {
+                #imac {
+                    float: none;
+                    display: block;
+                    margin: 0 auto;
+                    padding: 0;
+                    max-width: 95%;
+                }
+                .flexer-texter {
+                    text-align: center;
+                    width: 90%;
+                    margin: 0 auto;
+                    h3 {
+                        font-size: 1.7em;
+                    }
+                }
+                
+            }
+        }
         }
 
         .tri-info {
@@ -104,19 +138,16 @@
         .hr {
             width: 70%;
             border-color: #699df8;
-            margin-top: -2em;
+            margin-top: -1.5em;
         }
         
         .flex {
-            text-align: right;
-            padding-left: 1.5em;
-            padding-right: 1.5em;
-            padding-top: 5em;
-            padding-bottom: 2em;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            flex-wrap: wrap;
         }
         .flex-text {
-            text-align: left;
-            padding-top: 3em;
             h3 {
                 color: #2c96d1;
                 font-size: 2.5em;
@@ -133,62 +164,63 @@
         }
         .screenshots {
             background-color: #fff;
-            padding: 2em 0;
-            
-            #screen {
-                display: inline-block;
-                width: 28em;
-                height: auto;
+            padding: 4em 0;
+            .scaler {
+                h3 {
+                    padding: 0;
+                }
+                text-align: left;
             }
-
+            .app-pics {
+                float: right;
+            }
             #ipad {
                 display: inline-block;
-                width: 25em;
+                width: 20em;
                 height: auto;
-                padding-bottom: 4.5em;
-                padding-right: 1em;
+                max-width: 100%;
+                margin-right: 2em;
             }
             #iphone {
                 display: inline-block;
-                width: 8em;
+                width: 6.5em;
                 height: auto;
-                padding-bottom: 4.5em;
-                padding-right: 1em;
-
+                max-width: 100%;
+                margin-right: 2em;
             }
-        }
-        #screen {
-            display: block;
-            margin: 0 auto;
-            height: 28em;
-            width: 37em;
-            max-width: 90%;
-        }
-        #iphone {
-            display: none;
-            height: 19em;
-            width: 10em;
-            margin: 0 auto;
         }
         @media only screen and (max-width: 700px) {
             .tri-img {
                 margin-top: 1em;
             }
-            #screen {
-                display: none;
-            }
-            #iphone {
-                display: block;
-            }
-           .screenshots .texter {
+        }
+        @media only screen and (max-width: 900px) {
+               .screenshots .scaler {
                 text-align: center;
+                width: 85%;
+                margin: 0 auto;
                 h3 {
-                    padding-top: 0.75em;
-                    margin: 0;
-                    width: 75%;
+                    margin-top: 1em;
+                }
+            }
+                
+            }
+            @media only screen and (max-width: 1088px) {
+               .screenshots {
+                   #iphone {
+                display: none;            
+            }
+            .app-pics {
+                float: none;
+                #ipad {
+                    width: 26em;
+                    display: block;
                     margin: 0 auto;
                 }
             }
-        }
-    }
+               }
+            
+                
+            }
+    
 }
