@@ -78,7 +78,15 @@ export default class HomeViewControl extends BaseViewControl {
         this.context.userSpecificId = '';
         this.navigator.navigate(LoginViewControl);
     }
-
+    
+    loaded(){
+        jQuery('h6').mouseover(function(){
+            jQuery(this).attr('id', 'darker-add-new');
+        });
+        jQuery('h6').mouseleave(function(){
+            jQuery(this).removeAttr('id');
+        })
+    }
 
 }
 

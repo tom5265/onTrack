@@ -6,6 +6,8 @@
 @PrimaryGreen: #68C3A3;
 @PrimaryRed: #ef716f;
 @DarkerRed: darken(#ef716f, 20%);
+@PrimaryTeale: #40b0b1;
+@DarkerTeale: darken(#40b0b1, 10%);
 
 @Oswald: 'Oswald', sans-serif;
 
@@ -53,7 +55,7 @@
             background: -webkit-linear-gradient(to bottom, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to bottom, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
             font-family: 'Montserrat-Bold', sans-serif;
-            font-size: 1.5em;
+            font-size: 1.75em;
             color: white;
         }
         
@@ -63,9 +65,20 @@
         }
         
         .prompt-body{
-            font-family: 'Montserrat-Bold', sans-serif;
-            color: @PrimaryGreen;
-            font-size: 1.1em;
+            h4{
+                font-family: 'Montserrat-Bold', sans-serif;
+                color: @PrimaryBlue;
+                font-size: 1.5em;
+                padding-bottom: 2%;
+                padding-top: 0;
+            }
+            
+            p{
+                font-family: 'Montserrat-Light', sans-serif;
+                color: gray;
+                font-size: .9em;
+                line-height: 1.65em;
+            }
             
             .party-emojis{
                 width: 45%;

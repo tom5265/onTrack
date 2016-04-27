@@ -15,9 +15,9 @@
         <div>
             <div class="current-task-container row">
                 <plat-foreach plat-context="specificTask.taskObjectives">
-                    <div class="current-task col-phn-12">
-                        <p class="{{isCompleted}} task">{{objName}}</p>
-                        <plat-toggle plat-bind="isCompleted" class="toggle-primary toggleContainer" plat-change="someFunc()"></plat-toggle>
+                    <div class="current-task col-phn-12 row">
+                        <p class="col-phn-10 {{isCompleted}} task">{{objName}}</p>
+                        <plat-toggle plat-bind="isCompleted" class=" col-phn-2 toggle-primary toggleContainer" plat-change="someFunc()"></plat-toggle>
                     </div>
                 </plat-foreach>
             </div>
@@ -30,12 +30,13 @@
     <plat-modal plat-options="{ transition: 'fade' }" plat-bind="modal" class="modal-prompt">
         <div class="prompt-title">CONGRATULATIONS</div>
         <div class="prompt-body">
+            <h4>You successfully completed your task!</h4>
             <div class="row party-emojis">
                 <img src="../../images/party_emoji.png" class="col-phn-4">
                 <img src="../../images/party_emoji.png" class="col-phn-4">
                 <img src="../../images/party_emoji.png" class="col-phn-4">
             </div>
-            <p>You successfully completed your task! If you aren't already feeling good about yourself, you should be now. Congrats on staying <u>on track!</u></p>
+            <p>If you aren't already feeling good about yourself, you should be now. Congrats on staying <u>on track!</u></p>
         </div>
         <div class="prompt-action button-group">
             <plat-button plat-tap="hideModal(1)">Cancel</plat-button>
@@ -46,10 +47,11 @@
     <plat-modal plat-options="{ transition: 'fade' }" plat-bind="modal3" class="modal-prompt">
         <div class="prompt-title">CONGRATULATIONS</div>
         <div class="prompt-body">
+            <h4>Task Complete!</h4>
             <div class="row party-emojis" id="off-track-emoji-row">
                 <img src="../../images/party_emoji.png" class="col-phn-12">
             </div>
-            <p>You completed the task! Even though you weren't <u>on track</u>, you still finished the  task. Kudos for that!</p>
+            <p>Even though you weren't <u>on track</u>, you still finished the  task. Kudos for that!</p>
         </div>
         <div class="prompt-action button-group">
             <plat-button plat-tap="hideModal(3)">Cancel</plat-button>

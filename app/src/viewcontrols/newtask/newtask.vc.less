@@ -145,6 +145,7 @@
                     font-size: 1.5em;
                     width: 30%;  
              }
+             
         }
     }
     
@@ -152,6 +153,28 @@
         color: @PrimaryBlue;
         font-family: 'Montserrat-Light', sans-serif;
     }
+    
+    #darker-save-button{
+        background-color: @DarkerTeale;
+    }
+    
+    #hover-add-checkpoint{
+        color: white;
+        background-color: @PrimaryBlue;
+    }
+    
+     @mobile:  ~"only screen and (max-width: 770px)";
+        @media @mobile{
+            .new-task-main-container{
+                .new-task-middle{
+                    .checkpoint-container{
+                        input{
+                            margin-top: 3%;
+                        }
+                    }
+                }
+            }   
+        }
 }
 }
 
