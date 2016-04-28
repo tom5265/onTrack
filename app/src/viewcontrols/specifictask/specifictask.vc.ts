@@ -76,7 +76,7 @@ export default class SpecifictaskViewControl extends BaseViewControl {
                     bg.style.backgroundColor = 'rgba(250,255,255,0.2)';
                     let button = jQuery('#deleteButton');
                     button.removeClass('animated tada complete-button')
-                    button.text('Delete This Task');
+                    button.text('Delete Task');
                     button.css({'backgroundColor' : '#ef716f','borderColor' : '#ef716f'})
                 }
             }

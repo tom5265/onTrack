@@ -8,11 +8,12 @@ import SuggestionsViewControl from '../viewcontrols/suggestions/suggestions.vc';
 import SpecificTaskViewControl from '../viewcontrols/specifictask/specifictask.vc';
 
 
+
 export default class MyApp extends App {
     constructor(router: routing.Router, config: web.IBrowserConfig) {
         super();
 
-		config.routingType = config.STATE;
+		// config.routingType = config.STATE;
 
         router.configure([
             { pattern: '', view: LoginViewControl },
@@ -28,6 +29,14 @@ export default class MyApp extends App {
 
     error(ev: events.ErrorEvent<Error>): void {
         console.log(ev.error);
+    }
+    
+    ready() {
+        setTimeout(() => {
+            if ((<any>window).navigator) {
+                (<any>window).navigator.splashscreen.hide();
+            }
+        }, 3000);
     }
 }
 
