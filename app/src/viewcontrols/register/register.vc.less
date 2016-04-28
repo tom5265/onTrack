@@ -9,7 +9,8 @@
             background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
             height: 100vh;
-            width: 100%;                          
+            width: 100%;  
+            font-family: 'Montserrat-Light';                         
         }
         .form-container {
             position: relative;
@@ -19,15 +20,22 @@
             max-width: 80%;
             background-color: #fff;
             margin: 0 auto;
-            border-radius: 3%;
-            box-shadow: 0 0 12px #888888;
+            background-color:rgba(250,255,255,0.2);
+            border-radius: 0.5em;
+            box-shadow: 0 0 100px 1px #83a4d4; 
             padding-bottom: 5%;
             input {
                 width: 65%;
-                .border-radius(0);
+                border-color: white;
+                color: black;
+            }
+            ::-webkit-input-placeholder{
+                color: white;
+                text-align: center;
             }
             #passwordInput {
                 margin: 1em 0;
+                color: black;
             }
             input:focus {
                 outline: none;
