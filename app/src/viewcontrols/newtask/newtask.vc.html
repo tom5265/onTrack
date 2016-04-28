@@ -1,4 +1,7 @@
 <div class="new-task-main-container">
+    <plat-link plat-options=" { view: home } ">
+        <i id="back-icon" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+    </plat-link>
     <div class="new-task-top-header">
         <h1>New Task</h1>
     </div>
@@ -18,7 +21,7 @@
         <div class="checkpoint-container row">
             <plat-input class="col-phn-9" type="text" placeholder="Checkpoint" plat-bind='checkpointInput' id="checkpoint-input"></plat-input>
             <div class="col-phn-3 checkpoint-add">
-                <button plat-tap="addCheckpoint()" class="add-checkpoint-button">Add Checkpoint</button>
+                <button plat-tap="addCheckpoint()" class="add-checkpoint-button">Add</button>
             </div>
         </div>
         <!-- COMPLETION DATE -->

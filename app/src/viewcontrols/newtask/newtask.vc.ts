@@ -12,6 +12,7 @@ export default class NewtaskViewControl extends BaseViewControl {
 
 
     context: any = {
+        home: HomeViewControl,
         checkpointInput: "",
         UID: '',
         SingleTask: {
@@ -160,6 +161,12 @@ export default class NewtaskViewControl extends BaseViewControl {
         jQuery('.add-checkpoint-button').mouseleave(function(){
             jQuery(this).removeAttr('id');
         });
+        // jQuery(window).resize(function(){
+        //     if(innerWidth < 770){
+        //         console.log('take away checkpoints');
+        //         jQuery('.add-checkpoint-button').text('Add');
+        //     }
+        // })
     }
 
 }
